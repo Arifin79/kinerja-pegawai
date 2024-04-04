@@ -1,66 +1,88 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# **Absensi App**
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Features
 
-## About Laravel
+-   CRUD Positions (CRUD Jabatan/Posisi)
+-   CRUD Users (Admin, Operator and Users (Employees))
+-   CRUD Holidays (CRUD Hari Libur)
+-   CRUD Attendances (Can have multiple attendances and can using only button or presence using QRCode)
+-   Using Datatables (Powergrid livewire)
+-   Can Export to Excel and CSV
+-   and more...
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Cara Install di Local
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   Hal yang harus dipersiapkan
+    -   git
+    -   composer
+    -   php v8.1
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```sh
+# clone terlebih dahulu lewat cli (cmd, bash, atau yg lain)
+git clone https://github.com/muhammadpauzi/absensi-app.git
 
-## Learning Laravel
+# masuk ke foldernya
+cd absensi-app
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# install semua package
+composer install
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+# pilih salah satu
+# 1. windows
+copy .env.example .env
+# 2. unix (ubuntu, mac os and others)
+cp .env.example .env
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# setelah itu, setting .env file seperti nama database (DB_DATABASE), username dan passwordnya
+# lalu buat database baru dari phpmyadmin atau cli langsung juga bisa dengan nama sesuai DB_DATABASE yang ada di file .env
+php artisan key:generate
+php artisan migrate
+php artisan db:seed
+php artisan serve
 
-## Laravel Sponsors
+# lalu buka browser dengan url: http://localhost:8000/
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## How to install/use (english)
 
-### Premium Partners
+-   Clone this repository
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+```sh
+git clone https://github.com/muhammadpauzi/absensi-app.git
+# make sure you are in the folder
+cd absensi-app
+```
 
-## Contributing
+-   Install all packages
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```sh
+composer install
+```
 
-## Code of Conduct
+-   Copy/rename file .env.example to .env
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```sh
+# windows
+copy .env.example .env
+# unix (ubuntu, mac os and others)
+cp .env.example .env
+```
 
-## Security Vulnerabilities
+-   Configure .env file
+    <br>
+    Open your .env file and change the database name (DB_DATABASE) to whatever you have, username (DB_USERNAME) and password (DB_PASSWORD) field correspond to your configuration.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+-   Create database
+    <br>
+    Create a database according to the name in DB_DATABASE in the .env file
 
-## License
+-   Run artisan commands
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```sh
+php artisan key:generate
+php artisan migrate
+php artisan db:seed
+php artisan serve
+```
+
+-   And go to http://localhost:8000/
