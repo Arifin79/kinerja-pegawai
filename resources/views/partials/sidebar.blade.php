@@ -11,14 +11,14 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('attendances.*') ? 'active' : '' }}"
-                    href="{{ route('attendances.index') }}">
+                    href="{{ route('attendances.index') }}">a
                     <span data-feather="clipboard" class="align-text-bottom"></span>
                     Tugas
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('attendances.*') ? 'active' : '' }}"
-                    href="{{ route('attendances.index') }}">
+                <a class="nav-link {{ request()->routeIs('news.*') ? 'active' : '' }}"
+                    href="{{ route('information.index') }}">
                     <span data-feather="clipboard" class="align-text-bottom"></span>
                     Informasi
                 </a>
