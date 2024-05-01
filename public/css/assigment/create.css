@@ -1,0 +1,278 @@
+
+.detail-project .overlap {
+    position: absolute;
+    width: 1142px;
+    top: 130px;
+    left: 277px;
+    border-radius: 10px;
+  }
+
+  .detail-project .frame {
+    position: absolute;
+    width: 1210px;
+    height: 790px;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .detail-project .group {
+    position: absolute;
+    width: 206px;
+    height: 30px;
+    top: 116px;
+    left: 35px;
+  }
+
+  .detail-project .text-wrapper {
+    position: absolute;
+    width: 166px;
+    top: 5px;
+    left: 38px;
+    font-family: "Inter-Regular", Helvetica;
+    font-weight: 400;
+    color: #ff0000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+
+  .detail-project .clock {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 0;
+    left: 0;
+  }
+
+  .detail-project .div {
+    position: absolute;
+    top: 26px;
+    left: 35px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 32px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+
+  .detail-project .text-wrapper-2 {
+    position: absolute;
+    top: 78px;
+    left: 35px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+
+  .detail-project .line {
+    position: absolute;
+    width: 220px;
+    height: 2px;
+    top: 500px;
+    left: 904px;
+  }
+
+  .detail-project .overlap-group-wrapper {
+    position: absolute;
+    width: 188px;
+    height: 42px;
+    top: 104px;
+    left: 990px;
+  }
+
+  .detail-project .overlap-group {
+    position: relative;
+    width: 186px;
+    height: 42px;
+    background-color: #0066ff;
+    border-radius: 10px;
+  }
+
+  .detail-project .text-wrapper-3 {
+    position: absolute;
+    width: 131px;
+    top: 10px;
+    left: 33px;
+    font-family: "Arial-Bold", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: normal;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font-family);
+  }
+
+  .detail-project .add-circle {
+    position: absolute;
+    width: 26px;
+    height: 25px;
+    top: 8px;
+    left: 147px;
+  }
+
+  .detail-project .overlap-wrapper {
+    position: absolute;
+    width: 1073px;
+    height: 72px;
+    top: 196px;
+    left: 37px;
+  }
+
+  .detail-project .overlap-2 {
+    position: relative;
+    width: 1140px;
+    height: 72px;
+    margin-bottom: 20px;
+    background-color: #cecece;
+    border-radius: 10px;
+  }
+
+  .detail-project .text-wrapper-4 {
+    position: absolute;
+    width: 101px;
+    top: 25px;
+    left: 75px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #929292;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+
+  .detail-project .text-wrapper-5 {
+    position: absolute;
+    width: 135px;
+    top: 25px;
+    left: 251px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #929292;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+
+  .detail-project .text-wrapper-6 {
+    position: absolute;
+    width: 125px;
+    top: 7px;
+    left: 700px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #0066ff;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+
+  .detail-project .img {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 16px;
+    left: 16px;
+  }
+
+  .detail-project .group-2 {
+    position: absolute;
+    width: 207px;
+    height: 43px;
+    top: 14px;
+    left: 720px;
+  }
+
+  .detail-project .ellipse {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 0;
+    left: 0;
+    background-color: #ffffff;
+    border-radius: 20px/19.84px;
+  }
+
+  .detail-project .text-wrapper-7 {
+    position: absolute;
+    width: 153px;
+    top: 15px;
+    left: 170px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+
+  .detail-project .remove {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 18px;
+    left: 1090px;
+  }
+
+  .detail-project .line-2 {
+    position: absolute;
+    width: 2px;
+    height: 45px;
+    top: 13px;
+    left: 946px;
+  }
+
+  .detail-project .edit {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: 18px;
+    left: 1050px;
+  }
+
+  .detail-project .div-wrapper {
+    position: absolute;
+    width: 1073px;
+    height: 72px;
+    top: 288px;
+    left: 37px;
+  }
+
+  .detail-project .text-wrapper-9 {
+    font-family: "Arial-Bold", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 30px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+    position: relative;
+    left: 270px;
+    margin-top: 20px;
+  }
+
+  .btn-link{
+    margin-top: 2em;
+    border: 1px solid #e0e0e0;
+    background: #e0e0e0;
+    color: var(--text-dark);
+    text-decoration: none;
+    padding: 9px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font-family);
+  }
+  .btn-link:hover{
+    background-color: var(--primary-color-dark);
+  }

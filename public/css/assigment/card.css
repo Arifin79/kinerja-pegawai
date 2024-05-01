@@ -1,0 +1,183 @@
+.text-wrapper-6 {
+    font-family: "Arial-Bold", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 30px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+    position: relative;
+    left: 270px;
+    margin-top: 20px;
+  }
+
+  .frame {
+      position: relative;
+      width: 1220px;
+      height: 790px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      top: 15px;
+      left: 270px;
+      overflow: hidden;
+    }
+
+    .frame .group {
+      position: absolute;
+      width: 244px;
+      height: 51px;
+      top: 25px;
+      left: 220px;
+      margin-bottom: 100px;
+    }
+
+    .frame .overlap-group {
+      position: relative;
+      width: 250px;
+      height: 45px;
+      background-color: #ffffff;
+      border-radius: 50px;
+      border: 2px solid;
+      border-color: #a8a8a8;
+    }
+
+    .frame .text-wrapper {
+      position: absolute;
+      top: 14px;
+      left: 21px;
+      font-family: "Arial-Bold", Helvetica;
+      font-weight: 700;
+      color: #a5a5a5;
+      font-size: 14px;
+      letter-spacing: 0;
+      line-height: normal;
+      white-space: nowrap;
+
+
+    }
+
+    .frame .vector {
+      position: absolute;
+      width: 23px;
+      height: 23px;
+      top: 12px;
+      left: 210px;
+    }
+
+    .frame .overlap-wrapper {
+        margin-left: 22px;
+        height: 253px;
+        margin-top: 70px;
+    }
+
+    .frame .overlap {
+      position: relative;
+      width: 262px;
+      height: 286px;
+      margin-left: 30px;
+      background-color: #e9e9e9;
+      border-radius: 16px;
+      margin-top: 30px;
+    }
+
+    .frame .image-wrapper {
+      position: absolute;
+      width: 237px;
+      height: 165px;
+      top: 11px;
+      left: 12px;
+      background-color: #b6b5b5;
+      border-radius: 16px;
+    }
+
+    .frame .image {
+      position: absolute;
+      width: 96px;
+      height: 96px;
+      top: 26px;
+      left: 61px;
+    }
+
+    .frame .div {
+      top: 185px;
+      left: 11px;
+      font-family: "Inter-SemiBold", Helvetica;
+      font-weight: 600;
+      color: #000000;
+      font-size: 18px;
+      position: absolute;
+      letter-spacing: 0;
+      line-height: normal;
+    }
+
+    .frame .text-wrapper-2 {
+      position: absolute;
+      top: 218px;
+      left: 12px;
+      font-family: "Inter-Medium", Helvetica;
+      font-weight: 500;
+      color: #000000;
+      font-size: 15px;
+      letter-spacing: 0;
+      line-height: normal;
+      white-space: nowrap;
+    }
+
+    .frame .text-wrapper-3 {
+      position: absolute;
+      top: 254px;
+      left: 43px;
+      font-family: "Inter-Regular", Helvetica;
+      font-weight: 400;
+      color: #ff0000;
+      font-size: 15px;
+      letter-spacing: 0;
+      line-height: normal;
+      white-space: nowrap;
+    }
+
+    .frame .clock {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      top: 250px;
+      left: 12px;
+    }
+
+    .frame .btn-show {
+        position: absolute;
+        width: 60px;
+        height: 30px;
+        top: 250px;
+        left: 190px;
+        padding-left: 10px;
+        padding-top: 3px;
+        border: 2px solid #e0e0e0;
+        background: #ffffff;
+        color: var(--text-dark);
+        text-decoration: none;
+        border-radius: 7px;
+        cursor: pointer;
+        font-family: var(--font-family);
+      }
+
+    .frame .div-wrapper {
+      position: absolute;
+      width: 248px;
+      height: 286px;
+      top: 182px;
+      left: 586px;
+    }
+
+    .frame .text-wrapper-7 {
+      top: 26px;
+      left: 35px;
+      font-family: "Inter-Medium", Helvetica;
+      font-weight: 500;
+      color: #0066ff;
+      font-size: 32px;
+      position: absolute;
+      letter-spacing: 0;
+      line-height: normal;
+    }
+

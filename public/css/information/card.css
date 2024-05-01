@@ -1,0 +1,115 @@
+.text-wrapper-6 {
+    font-family: "Arial-Bold", Helvetica;
+    font-weight: 700;
+    color: #000000;
+    font-size: 30px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+    position: relative;
+    left: 270px;
+    margin-top: 25px;
+  }
+
+.frame {
+      position: relative;
+      width: 1220px;
+      height: 780px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      top: 20px;
+      left: 270px;
+      overflow: hidden;
+    }
+
+  .frame .text-wrapper {
+    position: absolute;
+    top: 26px;
+    left: 35px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+
+  .frame .text-wrapper-5 {
+    position: absolute;
+    top: 60px;
+    left: 35px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 15px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+
+  .frame .line {
+    width: 220px;
+    height: 2px;
+    top: 500px;
+    left: 904px;
+    margin-bottom: 50px;
+
+  }
+
+  body{
+    background-color: #f1f1f1;
+  }
+
+  .frame .group {
+    margin-left: 35px;
+    width: 360px;
+    height: 253px;
+    margin-top: 50px;
+  }
+
+  .frame .overlap-group {
+    position: relative;
+    width: 360px;
+    height: 270px;
+    background-color: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0.5px 0.5px 4px 2px #00000040;
+  }
+
+  .frame .div {
+    position: absolute;
+    top: 21px;
+    left: 25px;
+    font-family: "Inter-SemiBold", Helvetica;
+    font-weight: 600;
+    color: #000000;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
+
+  .frame .text-wrapper-2 {
+    position: absolute;
+    top: 71px;
+    left: 25px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+  }
+
+  .frame .p {
+    position: absolute;
+    width: 289px;
+    top: 113px;
+    left: 26px;
+    font-family: "Inter-Medium", Helvetica;
+    font-weight: 500;
+    color: #000000;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: normal;
+  }
