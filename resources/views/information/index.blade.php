@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+<link rel="dns-prefetch" href="//fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+<link rel="stylesheet" href={{ asset('css/information/main.css') }}>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @section('content')
 
 <div class="text-wrapper-6">Information</div>
@@ -39,7 +44,7 @@
                             </ul>
                         </div>
                     </div>
-                    <form method="GET" action="{{ route('information/index') }}" accept-charset="UTF-8" role="search">
+                    <form method="GET" action="{{ route('information.index') }}" accept-charset="UTF-8" role="search">
                         <div class="table-search">
                             <div>
                                 <button class="search-select">
@@ -83,9 +88,9 @@
                             <p>product not found</p>
                         @endif
                     </div>
-                    <div class="table-paginate">
+                    {{-- <div class="table-paginate">
                         {{ $information->links('information/layout/pagination') }}
-                    </div>
+                    </div> --}}
                 </div>
             </section>
             <br>

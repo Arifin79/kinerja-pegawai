@@ -21,12 +21,12 @@ class InformationController extends Controller
             $information = Information::latest()->paginate($perPage);
         }
 
-        return view ('information/index', ['information' => $information])->with('i', (request()->input('page', 1)-1) *5);
+        return view ('information.index', ['information' => $information])->with('i', (request()->input('page', 1)-1) *5);
     }
 
     public function create()
     {
-        return view('information/create');
+        return view('information.create');
     }
 
     public function store(Request $request){
@@ -45,7 +45,7 @@ class InformationController extends Controller
 
     public function edit($id){
         $information = Information::findOrFail($id);
-        return view('information/edit', ['information' => $information]);
+        return view('information.edit', ['information' => $information]);
     }
 
     public function update(Request $request, Information $information){
@@ -61,7 +61,7 @@ class InformationController extends Controller
 
         $product->save();
 
-        return redirect()->route('information/index')->with('success', 'Product Has Been Updated Successfully');
+        return redirect()->route('information.index')->with('success', 'Product Has Been Updated Successfully');
 
     }
 

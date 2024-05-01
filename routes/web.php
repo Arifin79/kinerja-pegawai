@@ -56,7 +56,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/presences/{attendance}/permissions', [PresenceController::class, 'permissions'])->name('presences.permissions');
 
         Route::get('/information', [InformationController::class, 'index'])->middleware('auth')->name('information');
-        Route::get('/information/index', [InformationController::class, 'index'])->middleware('auth')->name('information/index');
+        Route::get('/information/index', [InformationController::class, 'index'])->middleware('auth')->name('information.index');
         Route::get('/information/create', [InformationController::class, 'create'])->name('information/create');
         Route::post('/information/store', [InformationController::class, 'store'])->name('information/store');
         Route::put('/information/update', [InformationController::class, 'update'])->name('information/update');

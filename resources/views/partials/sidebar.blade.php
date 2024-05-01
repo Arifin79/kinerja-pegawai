@@ -9,13 +9,13 @@
                     Dashboard
                 </a>
             </li>
-            {{-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('information.*') ? 'active' : '' }}"
                     href="{{ route('information.index') }}">
                     <span data-feather="clipboard" class="align-text-bottom"></span>
                     Information
                 </a>
-            </li> --}}
+            </li>
             {{-- <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('news.*') ? 'active' : '' }}"
                     href="{{ route('information.index') }}">
