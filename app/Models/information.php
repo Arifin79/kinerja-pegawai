@@ -2,22 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Http\Request; 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tour extends Model
+class Information extends Model
 {
-    protected $table = 'tour';
     use HasFactory;
 
-    protected $fillable = [
-        'namatour',
-        'deskripsi',
-        'alamat',
-        'latitude',
-        'longitude',
-        'jamoperasional',
-        'biayamasuk',
-        'kontak',
-    ];
+    protected $fillable = ['title', 'date', 'description'];
 }

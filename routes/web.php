@@ -8,6 +8,7 @@ use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\PresenceController;
+use App\Http\Controllers\InformationController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -53,6 +54,15 @@ Route::middleware('auth')->group(function () {
         // employees permissions
 
         Route::get('/presences/{attendance}/permissions', [PresenceController::class, 'permissions'])->name('presences.permissions');
+
+        Route::get('/information', [InformationController::class, 'index'])->middleware('auth')->name('information');
+        Route::get('/information/index', [InformationController::class, 'index'])->middleware('auth')->name('information/index');
+        Route::get('/information/create', [InformationController::class, 'create'])->name('information/create');
+        Route::post('/information/store', [InformationController::class, 'store'])->name('information/store');
+        Route::put('/information/update', [InformationController::class, 'update'])->name('information/update');
+        Route::delete('/information/{id}', [InformationController::class, 'destroy'])->name('information/destroy');
+        Route::get('/information/edit/{id}', [InformationController::class, 'edit'])->name('information/edit');
+
     });
 
     Route::middleware('role:user')->name('home.')->group(function () {

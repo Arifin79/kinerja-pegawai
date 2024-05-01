@@ -9,20 +9,20 @@
                     Dashboard
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('attendances.*') ? 'active' : '' }}"
-                    href="{{ route('attendances.index') }}">a
+            {{-- <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('information.*') ? 'active' : '' }}"
+                    href="{{ route('information.index') }}">
                     <span data-feather="clipboard" class="align-text-bottom"></span>
-                    Tugas
+                    Information
                 </a>
-            </li>
-            <li class="nav-item">
+            </li> --}}
+            {{-- <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('news.*') ? 'active' : '' }}"
                     href="{{ route('information.index') }}">
                     <span data-feather="clipboard" class="align-text-bottom"></span>
                     Informasi
                 </a>
-            </li>
+            </li> --}}
             {{-- <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('positions.*') ? 'active' : '' }}"
                     href="{{ route('positions.index') }}">
