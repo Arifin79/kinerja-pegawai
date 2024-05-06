@@ -7,7 +7,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @section('content')
 
-<div class="text-wrapper-6">Information</div>
     <div class="frame">
         <main class="container">
             <section>

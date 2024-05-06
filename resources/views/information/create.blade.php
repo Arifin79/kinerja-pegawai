@@ -1,15 +1,20 @@
-@extends('admin/information.layout.main')
+@extends('layouts.app')
+
+<link rel="dns-prefetch" href="//fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+<link rel="stylesheet" href={{ asset('css/information/create.css') }}>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @section('content')
 
-<div class="text-wrapper-6">Information</div>
-    <div class="frame">
+<div class="frame">
         <main class="container">
             <section>
-                <form action="{{ route('admin/information/store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('information/store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="titlebar">
-                        <h4>Add Product</h4>
+                        <h4>Add Information</h4>
                     </div>
                     <div class="card">
                        <div>

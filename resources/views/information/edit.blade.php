@@ -1,12 +1,17 @@
-@extends('admin/information.layout.main')
+@extends('layouts.app')
+
+<link rel="dns-prefetch" href="//fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+<link rel="stylesheet" href={{ asset('css/information/create.css') }}>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @section('content')
 
-<div class="text-wrapper-6">Information</div>
     <div class="frame">
         <main class="container">
             <section>
-                <form action="{{ route('admin/information/update', $information->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('information/update', $information->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="titlebar">

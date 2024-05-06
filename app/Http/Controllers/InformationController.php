@@ -39,7 +39,7 @@ class InformationController extends Controller
         $product->description = $request->description;
 
         $product->save();
-        return redirect()->route('information/index')->with('success', 'Assignment Added successfully');
+        return redirect()->route('information.index')->with('success', 'Assignment Added successfully');
 
     }
 
