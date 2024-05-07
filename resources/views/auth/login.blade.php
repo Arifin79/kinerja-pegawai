@@ -1,5 +1,11 @@
 @extends('layouts.auth')
 
+<link rel="dns-prefetch" href="//fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+<link rel="stylesheet" href={{ asset('css/login/main.css') }}>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 @push('style')
 <link rel="stylesheet" href="{{ asset('css/auth/login.css') }}">
 @endpush
