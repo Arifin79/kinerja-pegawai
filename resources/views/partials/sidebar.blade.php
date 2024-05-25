@@ -13,7 +13,14 @@
                 <a class="nav-link {{ request()->routeIs('information.*') ? 'active' : '' }}"
                     href="{{ route('information.index') }}">
                     <span data-feather="clipboard" class="align-text-bottom"></span>
-                    Information
+                    Informasi
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('assignment.*') ? 'active' : '' }}"
+                    href="{{ route('assignment.index') }}">
+                    <span data-feather="clipboard" class="align-text-bottom"></span>
+                    Tugas
                 </a>
             </li>
             {{-- <li class="nav-item">
