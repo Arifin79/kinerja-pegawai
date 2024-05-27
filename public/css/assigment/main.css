@@ -1,24 +1,5 @@
-/* Import other CSS files */
-@import url("card.css");
-@import url("information.css");
-@import url("assignment.css");
-
-body {
-  font-family: sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
 /* Styles for other page elements */
-@import "/public/css/profile/sideBar.css";
-@import "assignment.css";
+@import "assigment.css";
 @import "task.css";
-@import "card.css";
 @import "create.css";
 

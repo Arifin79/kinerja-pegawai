@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\InformationController;
+use App\Http\Controllers\AssignmentController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -62,6 +63,14 @@ Route::middleware('auth')->group(function () {
         Route::put('/information/update', [InformationController::class, 'update'])->name('information/update');
         Route::delete('/information/{id}', [InformationController::class, 'destroy'])->name('information/destroy');
         Route::get('/information/edit/{id}', [InformationController::class, 'edit'])->name('information/edit');
+
+        Route::get('/assignment', [AssignmentController::class, 'index'])->middleware('auth')->name('assignment');
+        Route::get('/assignment/index', [AssignmentController::class, 'index'])->middleware('auth')->name('assignment.index');
+        Route::get('/assignment/create', [AssignmentController::class, 'create'])->name('assignment/create');
+        Route::post('/assignment/store', [AssignmentController::class, 'store'])->name('assignment/store');
+        Route::put('/assignment/update', [AssignmentController::class, 'update'])->name('assignment/update');
+        Route::delete('/assignment/{id}', [AssignmentController::class, 'destroy'])->name('assignment/destroy');
+        Route::get('/assignment/edit/{id}', [AssignmentController::class, 'edit'])->name('assignment/edit');
 
     });
 

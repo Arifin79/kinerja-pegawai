@@ -3,7 +3,12 @@
 <link rel="dns-prefetch" href="//fonts.bunny.net">
 <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+<<<<<<< HEAD
 <link rel="stylesheet" href={{ asset('css/login/main.css') }}>
+=======
+{{-- <link rel="stylesheet" href={{ asset('css/login/main.css') }}> --}}
+<link rel="stylesheet" href={{ asset('css/auth/login.css') }}>
+>>>>>>> dfcfa7a6f2648e81ebf6eb67a82601f33117f277
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @push('style')
