@@ -1,53 +1,36 @@
 @extends('layouts.auth')
 
-<link rel="dns-prefetch" href="//fonts.bunny.net">
-<link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-<<<<<<< HEAD
-<link rel="stylesheet" href={{ asset('css/login/main.css') }}>
-=======
-{{-- <link rel="stylesheet" href={{ asset('css/login/main.css') }}> --}}
-<link rel="stylesheet" href={{ asset('css/auth/login.css') }}>
->>>>>>> dfcfa7a6f2648e81ebf6eb67a82601f33117f277
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-@push('style')
-<link rel="stylesheet" href="{{ asset('css/auth/login.css') }}">
-@endpush
 
 @section('content')
+<div style="display: flex; align-items: center; justify-content: center; height: 100vh; background-color: #ffffff;">
+    <div style="text-align: center; max-width: 400px; width: 100%;">
+        <h1>WELCOME BACK!</h1>
+        <p>To our Company</p>
+        <img src="{{ asset('images/extroverse_logo.jpg') }}" alt="Extroverse Logo" style="margin-bottom: 20px; max-width: 300px;">
 
-<div class="w-100">
-
-    <main class="form-signin w-100 m-auto">
-        <form method="POST" action="{{ route('auth.login') }}" id="login-form">
-            <h1 class="h3 mb-3 fw-normal">Silahkan masuk untuk absensi</h1>
-
-            <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInputEmail" name="email"
-                    placeholder="name@example.com">
-                <label for="floatingInputEmail">Email address</label>
+        <form method="POST" action="{{ route('auth.login') }}" id="login-form" style="border: 1px solid #ccc; padding: 20px; border-radius: 5px;">
+            @csrf
+            <div style="margin-bottom: 15px;">
+                <label for="email" style="display: block; font-weight: bold; margin-bottom: 5px;">Email</label>
+                <input type="email" id="floatingInputEmail" name="email" placeholder="name@example.com" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
             </div>
-            <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" name="password"
-                    placeholder="Password">
-                <label for="floatingPassword">Password</label>
+            <div style="margin-bottom: 15px;">
+                <label for="password" style="display: block; font-weight: bold; margin-bottom: 5px;">Password</label>
+                <input type="password" id="floatingPassword" name="password" placeholder="Password" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
             </div>
-
-            <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" name="remember" id="flexCheckRemember">
-                <label class="form-check-label" for="flexCheckRemember">
-                    Ingatkan Saya di Perangkat ini
-                </label>
-            </div>
-
-            <button class="w-100 btn btn-primary" type="submit" id="login-form-button">Masuk</button>
-            <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
+            <button type="submit" id="login-form-button" style="width: 100%; padding: 10px; border: none; border-radius: 5px; background-color: #6c757d; color: white; font-weight: bold;">Sign In</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2024</p>
         </form>
-    </main>
-
+    </div>
 </div>
 @endsection
+
+@push('style')
+<style>
+    body {
+        font-family: 'Nunito', sans-serif;
+    }
+</style>
 
 @push('script')
 <script type="module" src="{{ asset('js/auth/login.js') }}"></script>
