@@ -12,7 +12,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('information.*') ? 'active' : '' }}"
                     href="{{ route('information.index') }}">
-                    <span data-feather="clipboard" class="align-text-bottom"></span>
+                    <span data-feather="bell" class="align-text-bottom"></span>
                     Informasi
                 </a>
             </li>
@@ -61,7 +61,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('presences.*') ? 'active' : '' }}"
                     href="{{ route('presences.index') }}">
-                    <span data-feather="clipboard" class="align-text-bottom"></span>
+                    <span data-feather="check-square" class="align-text-bottom"></span>
                     Data Kehadiran
                 </a>
             </li>
