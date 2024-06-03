@@ -23,13 +23,13 @@
                     Tugas
                 </a>
             </li>
-            {{-- <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('news.*') ? 'active' : '' }}"
-                    href="{{ route('information.index') }}">
+            <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('task.*') ? 'active' : '' }}"
+                    href="{{ route('task.index') }}">
                     <span data-feather="clipboard" class="align-text-bottom"></span>
-                    Informasi
+                    Task
                 </a>
-            </li> --}}
+            </li>
             {{-- <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('positions.*') ? 'active' : '' }}"
                     href="{{ route('positions.index') }}">

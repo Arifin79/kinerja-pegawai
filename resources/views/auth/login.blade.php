@@ -18,7 +18,7 @@
             @csrf
             <div style="margin-bottom: 15px;">
                 <label for="email" style="display: block; font-weight: bold; margin-bottom: 5px;">Email</label>
-                <input type="email" id="floatingInputEmail" name="email" placeholder="name@example.com" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                <input type="email" id="floatingInputEmail" name="email" placeholder="Email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
             </div>
             <div style="margin-bottom: 15px;">
                 <label for="password" style="display: block; font-weight: bold; margin-bottom: 5px;">Password</label>

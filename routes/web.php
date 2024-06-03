@@ -3,13 +3,17 @@
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HolidayController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\InformationController;
+use App\Http\Controllers\InformationUserController;
 use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\AssignmentUserController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -72,16 +76,51 @@ Route::middleware('auth')->group(function () {
         Route::delete('/assignment/{id}', [AssignmentController::class, 'destroy'])->name('assignment/destroy');
         Route::get('/assignment/edit/{id}', [AssignmentController::class, 'edit'])->name('assignment/edit');
 
+        Route::get('/task', [TaskController::class, 'index'])->middleware('auth')->name('task');
+        Route::get('/task/index', [TaskController::class, 'index'])->middleware('auth')->name('task.index');
+        Route::post('/task/store', [TaskController::class, 'store'])->name('task/store');
+
     });
 
-    Route::middleware('role:user')->name('home.')->group(function () {
+    Route::middleware('role:user')->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('index');
+        Route::get('/home', [HomeController::class, 'index'])->name('home.index');
+        Route::get('/dashboard-user', [DashboardUserController::class, 'index'])->name('dashboard-user.index');
+
         // desctination after scan qrcode
         Route::post('/absensi/qrcode', [HomeController::class, 'sendEnterPresenceUsingQRCode'])->name('sendEnterPresenceUsingQRCode');
         Route::post('/absensi/qrcode/out', [HomeController::class, 'sendOutPresenceUsingQRCode'])->name('sendOutPresenceUsingQRCode');
 
         Route::get('/absensi/{attendance}', [HomeController::class, 'show'])->name('show');
         Route::get('/absensi/{attendance}/permission', [HomeController::class, 'permission'])->name('permission');
+
+        // Route::get('/assignment-user', [AssignmentUserController::class, 'index'])->middleware('auth')->name('assignment-user');
+        // Route::get('/assignment-user/index', [AssignmentUserController::class, 'index'])->middleware('auth')->name('assignment-user.index');
+        // Route::get('/assignment-user/create', [AssignmentUserController::class, 'create'])->name('assignment-user/create');
+        // Route::post('/assignment-user/store', [AssignmentUserController::class, 'store'])->name('assignment-user/store');
+        // Route::put('/assignment-user/update', [AssignmentUserController::class, 'update'])->name('assignment-user/update');
+        // Route::delete('/assignment-user/{id}', [AssignmentUserController::class, 'destroy'])->name('assignment-user/destroy');
+        // Route::get('/assignment-user/edit/{id}', [AssignmentUserController::class, 'edit'])->name('assignment-user/edit');
+
+        Route::get('/assignment-user', [AssignmentUserController::class, 'index'])->middleware('auth')->name('assignment-user');
+        Route::get('/assignment-user/index', [AssignmentUserController::class, 'index'])->middleware('auth')->name('assignment-user.index');
+        Route::get('/assignment-user/create', [AssignmentUserController::class, 'create'])->name('assignment-user/create');
+        Route::post('/assignment-user/store', [AssignmentUserController::class, 'store'])->name('assignment-user/store');
+        Route::post('/assignment-user/taskStore', [AssignmentUserController::class, 'taskStore'])->name('assignment-user/taskStore');
+        Route::put('/assignment-user/update', [AssignmentUserController::class, 'update'])->name('assignment-user/update');
+        Route::delete('/assignment-user/{id}', [AssignmentUserController::class, 'destroy'])->name('assignment-user/destroy');
+        Route::get('/assignment-user/edit/{id}', [AssignmentUserController::class, 'edit'])->name('assignment-user/edit');
+        Route::get('/assignment-user/edit/{id}', [AssignmentUserController::class, 'taskIndex'])->name('assignment-user/edit');
+        Route::delete('/assignment-user/edit/{id}', [AssignmentUserController::class, 'destroyer'])->name('assignment-user/destroyer');
+
+        Route::get('/information-user', [InformationUserController::class, 'index'])->middleware('auth')->name('information-user');
+        Route::get('/information-user/index', [InformationUserController::class, 'index'])->middleware('auth')->name('information-user.index');
+        Route::get('/information-user/create', [InformationUserController::class, 'create'])->name('information-user/create');
+        Route::post('/information-user/store', [InformationUserController::class, 'store'])->name('information-user/store');
+        Route::put('/information-user/update', [InformationUserController::class, 'update'])->name('information-user/update');
+        Route::delete('/information-user/{id}', [InformationUserController::class, 'destroy'])->name('information-user/destroy');
+        Route::get('/information-user/edit/{id}', [InformationUserController::class, 'edit'])->name('information-user/edit');
+
     });
 
     Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');

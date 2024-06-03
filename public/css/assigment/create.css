@@ -49,12 +49,12 @@
 
   .detail-project .div {
     position: absolute;
-    top: 26px;
-    left: 35px;
+    top: 60px;
+    left: 20px;
     font-family: "Inter-SemiBold", Helvetica;
     font-weight: 600;
     color: #000000;
-    font-size: 32px;
+    font-size: 15px;
     letter-spacing: 0;
     line-height: normal;
   }
@@ -258,7 +258,7 @@
     line-height: normal;
     white-space: nowrap;
     position: relative;
-    left: 270px;
+    left: 20px;
     margin-top: 20px;
   }
 
