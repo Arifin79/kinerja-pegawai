@@ -109,6 +109,7 @@ class AssignmentUserController extends Controller
         $request->image->move(public_path('images'), $file_name);
 
         $producti->id = $request->id;
+        $product->id = $request->id;
         $product->name = $request->name;
         $product->title = $request->title;
         $product->date = $request->date;
@@ -161,18 +162,18 @@ class AssignmentUserController extends Controller
             @unlink($image);
         }
         $assignment->delete();
-        return redirect('assignment')->with('success', 'product Deleted!');
+        return redirect('assignment-user')->with('success', 'product Deleted!');
     }
 
-    // public function destroyer($id){
-    //     $task = Assignment::findOrFail($id);
-    //     $image_path = public_path(). "/images/";
-    //     $image = $image_path. $assignment->image;
-    //     if(file_exists($image)){
-    //         @unlink($image);
-    //     }
-    //     $task->delete();
-    //     return redirect()->route('assignment/edit', ['id' => $product->id])->with('success', 'Task Deleted!');
-    // }
+    public function destroyer($id){
+        $task = Task::findOrFail($id);
+        $image_path = public_path(). "/images/";
+        $image = $image_path. $task->image;
+        if(file_exists($image)){
+            @unlink($image);
+        }
+        $task->delete();
+        return redirect()->route('assignment-user/edit', ['id' => $task->id])->with('success', 'Task Deleted!');
+    }
 
 }
