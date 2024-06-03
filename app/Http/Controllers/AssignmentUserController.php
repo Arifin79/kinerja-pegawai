@@ -62,15 +62,6 @@ class AssignmentUserController extends Controller
         } else {
             $assignment = Assignment::latest()->paginate($perPage);
         }
-
-        $file_name = time() . '.' . $request->image->getClientOriginalExtension();
-        $request->image->move(public_path('images'), $file_name);
-
-        $task->name = $request->name;
-        $task->title = $request->title;
-        $task->date = $request->date;
-        $task->image = $file_name;
-
         return view ('assignment-user/edit', ['assignment' => $assignment, 'task' => $task])->with('i', (request()->input('page', 1)-1) *5);
     }
 
@@ -131,6 +122,7 @@ class AssignmentUserController extends Controller
     public function edit($id){
         $assignment = Assignment::findOrFail($id);
         $task = Task::where('id', $id)->orderBy('created_at')->get();
+        dd($task);
         return view('assignment-user/edit', ['assignment' => $assignment, 'task' => $task]);
     }
 

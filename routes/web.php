@@ -109,7 +109,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/assignment-user/taskStore', [AssignmentUserController::class, 'taskStore'])->name('assignment-user/taskStore');
         Route::put('/assignment-user/update', [AssignmentUserController::class, 'update'])->name('assignment-user/update');
         Route::delete('/assignment-user/{id}', [AssignmentUserController::class, 'destroy'])->name('assignment-user/destroy');
-        Route::get('/assignment-user/edit/{id}', [AssignmentUserController::class, 'edit'])->name('assignment-user/edit');
+        // Route::get('/assignment-user/edit/{id}', [AssignmentUserController::class, 'edit'])->name('assignment-user/edit');
         Route::get('/assignment-user/edit/{id}', [AssignmentUserController::class, 'taskIndex'])->name('assignment-user/edit');
         Route::delete('/assignment-user/edit/{id}', [AssignmentUserController::class, 'destroyer'])->name('assignment-user/destroyer');
 
