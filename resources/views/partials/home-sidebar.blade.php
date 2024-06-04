@@ -4,7 +4,7 @@
             @if (auth()->user()->isUser())
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('dashboard-user.*') ? 'active' : '' }}" aria-current="page"
-                    href="{{ route('dashboard-user.index') }}">
+                    href="{{ route('home.dashboard-user.index') }}">
                     <span data-feather="home" class="align-text-bottom"></span>
                     Dashboard
                 </a>
@@ -14,12 +14,12 @@
                     Absen
                 </a>
                 <a class="nav-link {{ request()->routeIs('assignment-user.*') ? 'active' : '' }}"
-                    href="{{ route('assignment-user.index') }}">
+                    href="{{ route('home.assignment-user.index') }}">
                     <span data-feather="home" class="align-text-bottom"></span>
                     Assignment
                 </a>
                 <a class="nav-link {{ request()->routeIs('information-user.*') ? 'active' : '' }}"
-                    href="{{ route('information-user.index') }}">
+                    href="{{ route('home.information-user.index') }}">
                     <span data-feather="home" class="align-text-bottom"></span>
                     Information
                 </a>
