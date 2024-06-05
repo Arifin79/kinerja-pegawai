@@ -14,6 +14,7 @@ use App\Http\Controllers\InformationUserController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\AssignmentUserController;
 use App\Http\Controllers\TaskController;
+use FontLib\Table\Type\name;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -82,7 +83,7 @@ Route::middleware('auth')->group(function () {
 
     });
 
-    Route::middleware('role:user')->group(function () {
+    Route::middleware('role:user')->name("home.")->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('index');
         Route::get('/home', [HomeController::class, 'index'])->name('home.index');
         Route::get('/dashboard-user', [DashboardUserController::class, 'index'])->name('dashboard-user.index');

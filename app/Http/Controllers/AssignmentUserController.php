@@ -117,7 +117,7 @@ class AssignmentUserController extends Controller
 
         $product->save();
 
-        return redirect()->route('assignment-user/edit', ['id' => $product->id])->with('success', 'Assignment Added successfully');
+        return redirect()->route('home.assignment-user/edit', ['id' => $product->id])->with('success', 'Assignment Added successfully');
     }
 
     public function edit($id){
@@ -162,7 +162,7 @@ class AssignmentUserController extends Controller
             @unlink($image);
         }
         $assignment->delete();
-        return redirect('assignment-user')->with('success', 'product Deleted!');
+        return redirect('home.assignment-user')->with('success', 'product Deleted!');
     }
 
     public function destroyer($id){
@@ -173,7 +173,7 @@ class AssignmentUserController extends Controller
             @unlink($image);
         }
         $task->delete();
-        return redirect()->route('assignment-user/edit', ['id' => $task->id])->with('success', 'Task Deleted!');
+        return redirect()->route('home.assignment-user/edit', ['id' => $task->id])->with('success', 'Task Deleted!');
     }
 
 }

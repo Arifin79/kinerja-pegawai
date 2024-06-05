@@ -19,7 +19,7 @@
         <img class="line" src="img/line-5.svg" />
         <div class="overlap-group-wrapper">
           <div class="overlap-group">
-            <a href="{{ route('assignment-user/create') }}" class="text-wrapper-3 ">Add Assignment</a>
+            <a href="{{ route('home.assignment-user/create') }}" class="text-wrapper-3">Add Assignment</a>
           </div>
         </div>
       </div>
@@ -34,10 +34,10 @@
                     <div class="group-2">
                         <div class="text-wrapper-7">{{ $product->name }}</div>
                     </div>
-                <a href="{{ route('assignment-user/edit', ['id' => $product->id]) }}" class="edit" style="padding-right:12px; padding-left:12px; padding-top:10px; margin-top: 0px; margin-right:15px;">
+                <a href="{{ route('home.assignment-user/edit', ['id' => $product->id]) }}" class="edit" style="padding-right:12px; padding-left:12px; padding-top:10px; margin-top: 0px; margin-right:15px;">
                     <i class="fas fa-pencil-alt" ></i>
                 </a>
-                <form method="post" action="{{ route('assignment-user/destroyer', ['id' => $product->id]) }}">
+                <form method="post" action="{{ route('home.assignment-user/destroyer', ['id' => $product->id]) }}">
                     @method('delete')
                     @csrf
                     <button class="remove" onclick="deleteConfirm(event)" style="background-color: transparent; border: none; padding-right:12px; padding-left:12px; padding-top:0px; margin-top: 0px; margin-right:15px">

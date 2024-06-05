@@ -25,7 +25,7 @@
                     <div class="text-wrapper-2">{{ $product->customer_type }}</div>
                     <div class="text-wrapper-3">{{ $product->deadline }}</div>
                     <img class="clock" src="{{ asset('images/clock.jpg') }}" />
-                    <a href="{{ route('assignment-user/edit', ['id' => $product->id]) }}" method="POST" class="btn-show">Detail</a>
+                    <a href="{{ route('home.assignment-user/edit', ['id' => $product->id]) }}" method="POST" class="btn-show">Detail</a>
                 </div>
 
             @endforeach

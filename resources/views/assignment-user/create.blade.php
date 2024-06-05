@@ -11,7 +11,7 @@
     <div class="frame">
         <main class="container">
             <section>
-                <form action="{{ route('assignment-user/taskStore') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('home.assignment-user/taskStore') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="titlebar">
                         <h4 class="add">Add Assignment</h4>
