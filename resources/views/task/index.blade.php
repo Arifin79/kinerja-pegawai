@@ -28,6 +28,7 @@
                     <div class="group-2">
                         <div class="text-wrapper-7">{{ $product->name }}</div>
                     </div>
+<<<<<<< HEAD
                     <a href="{{ route('information/edit', ['id' => $product->id]) }}" class="edit" style="padding-right:12px; padding-left:12px; padding-top:10px; margin-top: 0px; margin-right:15px;">
                         <i class="fas fa-pencil-alt"></i>
                     </a>
@@ -41,6 +42,21 @@
                 </div>
             @endforeach
         </div>
+=======
+                <a href="{{ route('information/edit', ['id' => $product->id]) }}" class="edit" style="padding-right:12px; padding-left:12px; padding-top:10px; margin-top: 0px; margin-right:15px;">
+                    <i class="fas fa-pencil-alt" ></i>
+                </a>
+                {{-- <form method="post" action="{{ route('assignment-user/destroy', ['id' => $product->id]) }}">
+                    @method('delete')
+                    @csrf
+                    <button class="remove" onclick="deleteConfirm(event)" style="background-color: transparent; border: none; padding-right:12px; padding-left:12px; padding-top:10px; margin-top: 0px; margin-right:15px">
+                        <i class="far fa-trash-alt"></i>
+                    </button>
+                </form> --}}
+            </div>
+        @endforeach
+      </div>
+>>>>>>> origin/main
     </div>
 </div>
 
