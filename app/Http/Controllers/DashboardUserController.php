@@ -15,6 +15,7 @@ class DashboardUserController extends Controller
             "title" => "Dashboard",
             "positionCount" => Position::count(),
             "userCount" => User::count(),
+            "userName" => User::value('name'),
             "informationCount" => Information::count(),
             "waktuCount" => Carbon::now()->format('h:i:s A')
         ]);
