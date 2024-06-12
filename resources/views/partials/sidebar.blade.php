@@ -27,7 +27,7 @@
                 <a class="nav-link {{ request()->routeIs('task.*') ? 'active' : '' }}"
                     href="{{ route('task.index') }}">
                     <span data-feather="clipboard" class="align-text-bottom"></span>
-                    Task
+                    File Project
                 </a>
             </li>
             {{-- <li class="nav-item">

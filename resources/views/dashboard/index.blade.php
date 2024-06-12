@@ -2,13 +2,17 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-3">
-            <h2 class="m-0 text-dark font-weight-bold mb-4">Good Morning {{ auth()->user()->name }} !!!</h2>
-            <h5 class="m-0 text-dark font-weight-bold mb-3">Dashboard</h5>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="greeting-container">
+                    <h2 class="greeting">Good Morning</h2>
+                    <h2 class="username">{{ auth()->user()->name }}</h2>
+                </div>
+                <h5 class="m-0 text-dark font-weight-bold mb-3">Dashboard</h5>
+            </div>
         </div>
     </div>
-<div>
     <div class="row">
         <div class="col-md-3">
             <div class="card shadow">

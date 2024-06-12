@@ -130,7 +130,7 @@
 
   .detail-project .overlap-2 {
     position: relative;
-    width: 1140px;
+    width: 1070px;
     height: 72px;
     margin-bottom: 20px;
     background-color: #cecece;
@@ -216,7 +216,7 @@
     position: absolute;
     width: 153px;
     top: 15px;
-    left: 170px;
+    left: -50px;
     font-family: "Inter-Medium", Helvetica;
     font-weight: 500;
     color: #000000;
