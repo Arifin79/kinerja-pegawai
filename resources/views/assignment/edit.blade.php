@@ -52,13 +52,9 @@
                             <hr>
                             <label>Customer Type</label>
                             <input type="text" class="input" name="customer_type" value="{{ $assignment->customer_type }}">
-                            {{-- <label>Category</label>
-                            <select  name="category">
-                                @foreach ( json_decode('{"Smartphone": "Smartphone", "Smart TV": "Smart Tv", "Computer": "Computer"}', true) as $optionKey => $optionValue )
-                                <option value="{{ $optionKey }}" {{ (isset($assignment->category) && $assignment->category == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
-                                @endforeach
-                            </select>
-                            <hr>
+                            <label>Category</label>
+
+                            {{-- <hr>
                             <label>Inventory</label>
                             <input type="text" class="input" name="quantity" value="{{ $assignment->quantity }}">
                             <hr>

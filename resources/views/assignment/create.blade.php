@@ -26,16 +26,28 @@
                             <label>Add Image</label>
                             <img src="" alt="" class="img-product" id="file-preview" />
                             <input type="file" name="image" accept="image/*" onchange="showFile(event)">
+
+
                         </div>
                        <div>
                             <label>Deadline</label>
                             <input type="date" name="deadline" />
                             <hr>
                             <label>Project Type</label>
-                            <input type="text" class="input" name="project_type">
+                            {{-- <input type="text" class="input" name="project_type"> --}}
+                            <select  name="project_type">
+                                @foreach ( json_decode('{"Smartphone": "Smartphone", "Smart TV": "Smart Tv", "Computer": "Computer"}', true) as $optionKey => $optionValue )
+                                <option value="{{ $optionKey }}" {{ (isset($assignment->project_type) && $assignment->project_type == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
+                                @endforeach
+                            </select>
                             <hr>
                             <label>Customer Type</label>
-                            <input type="text" class="input" name="customer_type">
+                            {{-- <input type="text" class="input" name="customer_type"> --}}
+                            <select  name="customer_type">
+                                @foreach ( json_decode('{"Smartphone": "Smartphone", "Smart TV": "Smart Tv", "Computer": "Computer"}', true) as $optionKey => $optionValue )
+                                <option value="{{ $optionKey }}" {{ (isset($assignment->customer_type) && $assignment->customer_type == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
+                                @endforeach
+                            </select>
                        </div>
                     </div>
                     <div class="titlebar">

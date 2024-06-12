@@ -49,22 +49,40 @@ class InformationController extends Controller
         return view('information.edit', ['information' => $information]);
     }
 
-    public function update(Request $request, Information $information){
-        $request->validate([
-            'title' => 'required'
-        ]);
+    public function update(Request $request, $id)
+{
+    // Validate the incoming request data
+    $validatedData = $request->validate([
+        'title' => 'sometimes|string|max:255',
+        'date' => 'sometimes|date',
+        'description' => 'sometimes|string'
+    ]);
 
-        $product = Information::find($request->hidden_id);
+    try {
+        // Find the product by ID, or fail if not found
+        $product = Information::findOrFail($id);
 
-        $product->title = $request->title;
-        $product->date = $request->date;
-        $product->description = $request->description;
+        // Update the product only with the fields present in the request
+        $product->fill($validatedData);
 
+        // Save the changes to the database
         $product->save();
 
-        return redirect()->route('information.index')->with('success', 'Product Has Been Updated Successfully');
-
+        // Return a success response
+        return response()->json([
+            "status" => 200,
+            "message" => "Data Sukses Diupdate",
+        ]);
+    } catch (\Throwable $th) {
+        // Return an error response if something goes wrong
+        return response()->json([
+            "status" => 500,
+            "message" => "Error updating data",
+            "error" => $th->getMessage()
+        ], 500);
     }
+}
+
 
     public function destroy($id){
         $information = Information::findOrFail($id);
