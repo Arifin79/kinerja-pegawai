@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<title>@yield('title', 'Dashboard')</title>
 @section('content')
 <div class="container-fluid">
     <div class="container-fluid">

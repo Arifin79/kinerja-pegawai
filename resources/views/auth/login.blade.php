@@ -1,5 +1,6 @@
 @extends('layouts.auth')
-
+<title>@yield('title', 'EXTROVERSE')</title>
+{{-- @section('title', 'extroverse') --}}
 
 @section('content')
 <div style="margin-top: 50px; margin-left: 50px">
@@ -8,7 +9,7 @@
 </div>
 
 <div style="display: flex; align-items: center; justify-content: center; height: 65vh; background-color: #ffffff;">
-    <div style=" max-width: 400px; width: 100%;">
+    <div style="max-width: 400px; width: 100%;">
         <div style="text-align: center; max-width: 400px; width: 100%;">
             <img src="{{ asset('images/extroverse_logo.jpg') }}" alt="Extroverse Logo" style="margin-bottom: 20px; max-width: 300px;">
         </div>
@@ -36,6 +37,7 @@
         font-family: 'Nunito', sans-serif;
     }
 </style>
+@endpush
 
 @push('script')
 <script type="module" src="{{ asset('js/auth/login.js') }}"></script>

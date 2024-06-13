@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<title>@yield('title', 'Edit Absensi')</title>
 @section('buttons')
 <div class="btn-toolbar mb-2 mb-md-0">
     <div>

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<title>@yield('title', 'QR Code')</title>
 @section('content')
 <div class="row">
     <div class="col-md-6">

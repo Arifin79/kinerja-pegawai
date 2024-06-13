@@ -1,4 +1,5 @@
 @extends('layouts.home')
+<title>@yield('title', 'Information')</title>
 
 <link rel="dns-prefetch" href="//fonts.bunny.net">
 <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">

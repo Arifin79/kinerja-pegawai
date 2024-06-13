@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<title>@yield('title', 'Data Kehadiran')</title>
 @section('content')
 @include('partials.alerts')
 

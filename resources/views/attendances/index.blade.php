@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<title>@yield('title', 'Absensi')</title>
 @push('style')
 @powerGridStyles
 @endpush

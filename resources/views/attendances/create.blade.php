@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+<title>@yield('title', 'Tambah Data Absensi')</title>
 @push('style')
 <link rel="stylesheet" href="{{ asset('tom-select/tom-select.css') }}">
 @endpush
