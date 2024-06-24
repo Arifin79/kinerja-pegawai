@@ -168,20 +168,23 @@
     background-color: var(--primary-color-dark);
   }
 
-  .btn-link{
+  .btn-link {
     margin-top: 2em;
     border: 1px solid #e0e0e0;
     background: #e0e0e0;
     color: var(--text-dark);
-    text-decoration: none;
     padding: 9px 15px;
+    text-decoration: none !important; /* Ensure no underline */
     border-radius: 4px;
     cursor: pointer;
     font-family: var(--font-family);
-  }
-  .btn-link:hover{
-    background-color: var(--primary-color-dark);
-  }
+    }
+
+    .btn-link:hover,
+    .btn-link:focus {
+        text-decoration: none !important; /* Ensure no underline on hover and focus */
+    }
+
 
   input[type="checkbox"],
   input[type="radio"] {

@@ -36,7 +36,7 @@
                             <label>Project Type</label>
                             {{-- <input type="text" class="input" name="project_type"> --}}
                             <select  name="project_type">
-                                @foreach ( json_decode('{"Smartphone": "Smartphone", "Smart TV": "Smart Tv", "Computer": "Computer"}', true) as $optionKey => $optionValue )
+                                @foreach ( json_decode('{"Konveksi": "Konveksi", "Software Development": "Software Development", "Hardware Service": "Hardware Service", "Event": "Event", "Digital Ads": "Digital Ads"}', true) as $optionKey => $optionValue )
                                 <option value="{{ $optionKey }}" {{ (isset($assignment->project_type) && $assignment->project_type == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
                                 @endforeach
                             </select>
@@ -44,7 +44,7 @@
                             <label>Customer Type</label>
                             {{-- <input type="text" class="input" name="customer_type"> --}}
                             <select  name="customer_type">
-                                @foreach ( json_decode('{"Smartphone": "Smartphone", "Smart TV": "Smart Tv", "Computer": "Computer"}', true) as $optionKey => $optionValue )
+                                @foreach ( json_decode('{"Mitra": "Mitra", "Reseller": "Reseller", "Non Mitra(Membership)": "Non Mitra(Membership)"}', true) as $optionKey => $optionValue )
                                 <option value="{{ $optionKey }}" {{ (isset($assignment->customer_type) && $assignment->customer_type == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
                                 @endforeach
                             </select>

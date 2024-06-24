@@ -168,17 +168,22 @@
     background-color: var(--primary-color-dark);
   }
 
-  .btn-link{
+  .btn-link {
     margin-top: 2em;
     border: 1px solid #e0e0e0;
     background: #e0e0e0;
     color: var(--text-dark);
     padding: 9px 15px;
-    text-decoration: none;
+    text-decoration: none !important; /* Ensure no underline */
     border-radius: 4px;
     cursor: pointer;
     font-family: var(--font-family);
-  }
+}
+
+.btn-link:hover,
+.btn-link:focus {
+    text-decoration: none !important; /* Ensure no underline on hover and focus */
+}
   .btn-link:hover{
     background-color: var(--primary-color-dark);
   }

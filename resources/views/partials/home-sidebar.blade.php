@@ -10,17 +10,17 @@
                 </a>
                 <a class="nav-link {{ request()->routeIs('home.*') ? 'active' : '' }}"
                     href="{{ route('home.index') }}">
-                    <span data-feather="home" class="align-text-bottom"></span>
+                    <span data-feather="check-square" class="align-text-bottom"></span>
                     Absen
                 </a>
                 <a class="nav-link {{ request()->routeIs('assignment-user.*') ? 'active' : '' }}"
                     href="{{ route('home.assignment-user.index') }}">
-                    <span data-feather="home" class="align-text-bottom"></span>
+                    <span data-feather="clipboard" class="align-text-bottom"></span>
                     Assignment
                 </a>
                 <a class="nav-link {{ request()->routeIs('information-user.*') ? 'active' : '' }}"
                     href="{{ route('home.information-user.index') }}">
-                    <span data-feather="home" class="align-text-bottom"></span>
+                    <span data-feather="bell" class="align-text-bottom"></span>
                     Information
                 </a>
             </li>
