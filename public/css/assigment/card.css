@@ -122,7 +122,7 @@
     .frame .text-wrapper-3 {
       position: absolute;
       top: 254px;
-      left: 43px;
+      left: 12px;
       font-family: "Inter-Regular", Helvetica;
       font-weight: 400;
       color: #ff0000;
@@ -132,13 +132,13 @@
       white-space: nowrap;
     }
 
-    .frame .clock {
+    /* .frame .clock {
       position: absolute;
       width: 25px;
       height: 25px;
       top: 250px;
       left: 12px;
-    }
+    } */
 
     .frame .btn-show {
         position: absolute;

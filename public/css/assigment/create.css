@@ -130,9 +130,10 @@
 
   .detail-project .overlap-2 {
     position: relative;
-    width: 1165px;
+    width: 1140px;
     height: 72px;
     margin-bottom: 20px;
+    margin-top: 20px;
     background-color: #cecece;
     border-radius: 10px;
   }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Assignment;
 use Carbon\Carbon;
+use App\Models\Task;
 
 
 class AssignmentController extends Controller
@@ -97,6 +98,17 @@ class AssignmentController extends Controller
         }
         $assignment->delete();
         return redirect('assignment')->with('success', 'product Deleted!');
+    }
+
+    public function destroyer($id){
+        $task = Task::findOrFail($id);
+        $image_path = public_path(). "/images/";
+        $image = $image_path. $task->image;
+        if(file_exists($image)){
+            @unlink($image);
+        }
+        $task->delete();
+        return redirect()->route('task.index', ['id' => $task->id])->with('success', 'Task Deleted!');
     }
 
 }

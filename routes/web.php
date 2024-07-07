@@ -76,6 +76,7 @@ Route::middleware('auth')->group(function () {
         Route::put('/assignment/update', [AssignmentController::class, 'update'])->name('assignment/update');
         Route::delete('/assignment/{id}', [AssignmentController::class, 'destroy'])->name('assignment/destroy');
         Route::get('/assignment/edit/{id}', [AssignmentController::class, 'edit'])->name('assignment/edit');
+        Route::delete('/assignment/edit/{id}', [AssignmentController::class, 'destroyer'])->name('assignment/destroyer');
 
         Route::get('/task', [TaskController::class, 'index'])->middleware('auth')->name('task');
         Route::get('/task/index', [TaskController::class, 'index'])->middleware('auth')->name('task.index');

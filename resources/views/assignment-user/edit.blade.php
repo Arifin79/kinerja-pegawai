@@ -37,13 +37,13 @@
                 {{-- <a href="{{ route('home.assignment-user/edit', ['id' => $product->id]) }}" class="edit" style="padding-right:12px; padding-left:12px; padding-top:10px; margin-top: 0px; margin-right:15px;">
                     <i class="fas fa-pencil-alt" ></i>
                 </a> --}}
-                <form method="post" action="{{ route('home.assignment-user/destroyer', ['id' => $product->id]) }}">
+                {{-- <form method="post" action="{{ route('home.assignment-user/destroyer', ['id' => $product->id]) }}">
                     @method('delete')
                     @csrf
                     <button class="remove" onclick="deleteConfirm(event)" style="background-color: transparent; border: none; padding-right:12px; padding-left:12px; padding-top:0px; margin-top: 0px; margin-right:15px">
                         <i class="far fa-trash-alt"></i>
                     </button>
-                </form>
+                </form> --}}
             </div>
         @endforeach
       </div>
