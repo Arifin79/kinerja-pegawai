@@ -14,6 +14,7 @@ use App\Http\Controllers\InformationUserController;
 use App\Http\Controllers\AssignmentController;
 use App\Http\Controllers\AssignmentUserController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\LocationController;
 use FontLib\Table\Type\name;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -115,8 +116,12 @@ Route::middleware('auth')->group(function () {
         Route::delete('/information-user/{id}', [InformationUserController::class, 'destroy'])->name('information-user/destroy');
         Route::get('/information-user/edit/{id}', [InformationUserController::class, 'edit'])->name('information-user/edit');
 
+
     });
 
+    //Location
+    Route::get('/location', [LocationController::class, 'index'])->name('location.index');
+    
     Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
 
@@ -125,3 +130,4 @@ Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('auth.login');
     Route::post('/login', [AuthController::class, 'authenticate']);
 });
+

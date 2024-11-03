@@ -11,13 +11,14 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('dashboard.index', [
-            "title" => "Dashboard",
-            "positionCount" => Position::count(),
-            "userCount" => User::count(),
-            "userName" => User::value('name'),
-            "informationCount" => Information::count(),
-            "waktuCount" => Carbon::now()->format('h:i:s A')
-        ]);
+        $title = "Dashboard";
+        $positionCount = Position::count();
+        $userCount = User::count();
+        $userName = User::value('name');
+        $informationCount = Information::count();
+        $time = now()->format('H:i:s');
+        
+        return view('dashboard.index', compact('title', 'positionCount', 'userCount', 'userName', 'informationCount', 'time'));
+              
     }
 }

@@ -52,6 +52,13 @@
                 </a>
             </li> --}}
             <li class="nav-item">
+                <a class="nav-link {{ request()->routeIs('location.index.*') ? 'active' : '' }}"
+                    href="{{ route('location.index') }}">
+                    <span data-feather="map-pin" class="align-text-bottom"></span>
+                    Location
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('attendances.*') ? 'active' : '' }}"
                     href="{{ route('attendances.index') }}">
                     <span data-feather="clipboard" class="align-text-bottom"></span>
