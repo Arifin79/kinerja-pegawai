@@ -4,9 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\LoginController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\LocationController;
 use App\Http\Controllers\Api\PresenceController;
 use App\Http\Controllers\Api\PermissionController;
-use App\Http\Controllers\LocationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +32,4 @@ Route::delete('/delete/{id}', [ProductController::class, 'delete']);
 Route::post('/login', [LoginController::class, "index"])->name('login');
 Route::get('/history', [PresenceController::class, 'index']);
 Route::post('/check-proximity', [LocationController::class, 'checkProximity'])->name('check.proximity');
+Route::get('/location', [LocationController::class, 'index']);

@@ -5,13 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Check Location</title>
+    <title>Real-Time Location Tracking</title>
 
     <!-- Leaflet CSS & JavaScript -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
-    <!-- CSS tambahan untuk styling yang lebih rapi -->
+    <!-- CSS tambahan untuk styling -->
     <style>
         body, html {
             margin: 0;
@@ -21,9 +21,9 @@
         }
 
         #map {
-           position: relative;
-           width: 100%;
-           height: 500px;
+            position: relative;
+            width: 100%;
+            height: 500px;
         }
 
         .location-button {
@@ -42,12 +42,8 @@
     <!-- Tombol untuk menemukan lokasi pengguna -->
     <button class="location-button" onclick="findUserLocation()">Lokasi Saya</button>
 
-    <!-- Peta dan Tombol Lokasi -->
-    <div id="map" style="height: 500px;"></div>
-    <button id="locationButton" class="btn btn-primary">Lokasi Saya</button>
-
-    {{-- <!-- Peta -->
-    <div id="map"></div> --}}
+    <!-- Peta -->
+    <div id="map"></div>
 
     <script>
         // Inisialisasi peta dengan posisi default
@@ -59,45 +55,87 @@
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
 
-        // Layer Satelit (ESRI)
-        const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-            maxZoom: 19,
-            attribution: 'Tiles © Esri &mdash; Source: Esri, i-cubed, USDA, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
-        });
+        // Lokasi pusat dan radius
+        const centerLatLng = [-6.40801, 108.28146]; // Ganti dengan lokasi pusat yang diinginkan
+        const radiusInMeters = 500; // Radius dalam meter
 
-        // Layer kontrol untuk beralih antara peta jalan dan satelit
-        const baseLayers = {
-            "Peta Jalan": streetLayer,
-            "Peta Satelit": satelliteLayer,
-        };
-        L.control.layers(baseLayers).addTo(map);
+        // Tambahkan marker pusat dan lingkaran radius pada lokasi pusat
+        const centerMarker = L.marker(centerLatLng).addTo(map)
+            .bindPopup("Lokasi Pusat").openPopup();
+        const radiusCircle = L.circle(centerLatLng, {
+            color: 'blue',
+            fillColor: '#3399ff',
+            fillOpacity: 0.3,
+            radius: radiusInMeters
+        }).addTo(map);
 
-        // Fungsi untuk menambahkan marker pada lokasi tertentu
-        function addMarker(lat, lng, popupText) {
-            const marker = L.marker([lat, lng]).addTo(map)
-                .bindPopup(popupText).openPopup();
-            map.setView([lat, lng], 14);
-            return marker;
+        // Variabel untuk menyimpan marker dan radius pengguna secara dinamis
+        let userMarker, userCircle;
+
+        // Fungsi untuk menghitung jarak antara dua koordinat
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371e3; // Radius bumi dalam meter
+            const φ1 = lat1 * Math.PI / 180;
+            const φ2 = lat2 * Math.PI / 180;
+            const Δφ = (lat2 - lat1) * Math.PI / 180;
+            const Δλ = (lon2 - lon1) * Math.PI / 180;
+
+            const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+                      Math.cos(φ1) * Math.cos(φ2) *
+                      Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+            return R * c; // Jarak dalam meter
         }
 
-        // Fungsi untuk mencari lokasi pengguna
+        // Fungsi untuk menemukan lokasi pengguna
         function findUserLocation() {
             if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(position => {
+                navigator.geolocation.watchPosition(position => {
                     const userLat = position.coords.latitude;
                     const userLng = position.coords.longitude;
-                
-                    // Tambahkan marker lokasi pengguna
-                    addMarker(userLat, userLng, "<b>Lokasi Anda Saat Ini</b>");
-                }, () => {
+
+                    // Jika marker pengguna sudah ada, hapus untuk memperbarui posisinya
+                    if (userMarker) {
+                        map.removeLayer(userMarker);
+                        map.removeLayer(userCircle);
+                    }
+
+                    // Tambahkan marker baru di lokasi pengguna
+                    userMarker = L.marker([userLat, userLng]).addTo(map)
+                        .bindPopup("<b>Lokasi Anda Saat Ini</b>").openPopup();
+
+                    // Tambahkan lingkaran radius di sekitar lokasi pengguna
+                    userCircle = L.circle([userLat, userLng], {
+                        color: 'red',
+                        fillColor: '#f03',
+                        fillOpacity: 0.2,
+                        radius: 50 // Radius sekitar pengguna dalam meter
+                    }).addTo(map);
+
+                    // Zoom dan pindah peta ke lokasi pengguna
+                    map.setView([userLat, userLng], 16);
+
+                    // Hitung jarak pengguna ke lokasi pusat
+                    const distance = calculateDistance(userLat, userLng, centerLatLng[0], centerLatLng[1]);
+                    
+                    // Cek apakah pengguna berada dalam radius pusat
+                    if (distance <= radiusInMeters) {
+                        alert("Anda berada dalam radius yang ditentukan!");
+                    } else {
+                        alert("Anda berada di luar radius.");
+                    }
+                }, error => {
+                    console.error(error);
                     alert("Tidak dapat mengakses lokasi Anda.");
-                });
+                }, { enableHighAccuracy: true, timeout: 5000, maximumAge: 0 });
             } else {
                 alert("Geolocation tidak didukung oleh browser Anda.");
             }
         }
-        // Jalankan pencarian lokasi pengguna saat halaman dimuat
-        window.onload = findUserLocation;
+
+        // Jalankan pencarian lokasi pengguna
+        findUserLocation();
     </script>
 @endsection
 </body>

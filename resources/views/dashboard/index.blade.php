@@ -39,37 +39,37 @@
     <div class="container py-4">
         <div class="row">
             <!-- Card Data Jabatan -->
-            <div class="col-md-3">
-                <div class="card shadow" onclick="handleClick('Data Jabatan')">
+            <div class="col-md-3 col-12 mb-3">
+                <a href="{{ route('positions.index') }}" class="card shadow text-decoration-none text-dark">
                     <div class="card-body">
                         <i class="fas fa-clipboard icon-top-right"></i>
                         <h6 class="fs-6 fw-light">Data Jabatan</h6>
                         <h4 class="fw-bold">{{ $positionCount }}</h4>
                     </div>
-                </div>
+                </a>
             </div>
             <!-- Card Data Karyawan -->
-            <div class="col-md-3">
-                <div class="card shadow" onclick="handleClick('Data Karyawan')">
+            <div class="col-md-3 col-12 mb-3">
+                <a href="{{ route('employees.index') }}" class="card shadow text-decoration-none text-dark">
                     <div class="card-body">
                         <i class="fas fa-user icon-top-right"></i>
                         <h6 class="fs-6 fw-light">Data Karyawan</h6>
                         <h4 class="fw-bold">{{ $userCount }}</h4>
                     </div>
-                </div>
+                </a>
             </div>
             <!-- Card Data Information -->
-            <div class="col-md-3">
-                <div class="card shadow" onclick="handleClick('Data Information')">
+            <div class="col-md-3 col-12 mb-3">
+                <a href="{{ route('information.index') }}" class="card shadow text-decoration-none text-dark">
                     <div class="card-body">
                         <i class="fas fa-bell icon-top-right"></i>
                         <h6 class="fs-6 fw-light">Data Information</h6>
                         <h4 class="fw-bold">{{ $informationCount }}</h4>
                     </div>
-                </div>
+                </a>
             </div>
             <!-- Card Waktu -->
-            <div class="col-md-3">
+            <div class="col-md-3 col-12 mb-3">
                 <div class="card shadow">
                     <div class="card-body">
                         <i class="fas fa-clock icon-top-right"></i>
@@ -80,6 +80,8 @@
             </div>
         </div>
     </div>
+    
+    
 
     <!-- Script untuk interaktivitas dan jam real-time -->
     <script>
