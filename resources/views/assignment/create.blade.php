@@ -26,10 +26,10 @@
                             <label>Add Image</label>
                             <img src="" alt="" class="img-product" id="file-preview" />
                             <input type="file" name="image" accept="image/*" onchange="showFile(event)">
-
-
                         </div>
-                       <div>
+                        <div>
+                            <label for="employee_name">Employee Name</label>
+                            <input type="text" name="employee_name" class="form-control" value="{{ old('employee_name', $assignment->employee_name ?? '') }}">
                             <label>Deadline</label>
                             <input type="date" name="deadline" />
                             <hr>

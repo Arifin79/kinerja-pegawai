@@ -38,6 +38,7 @@ class AssignmentController extends Controller
 
         $request->validate([
             'project_name' => 'required',
+            'employee_name' => 'required',
             'image' => 'required|mimes:png,jpg,jpeg,gif,svg|max:2028'
         ]);
 
@@ -50,8 +51,8 @@ class AssignmentController extends Controller
         $product->customer_name = $request->customer_name;
         $product->customer_type = $request->customer_type;
         $product->deadline = $request->deadline;
+        $product->employee_name = $request->employee_name;
         $product->image = $file_name;
-
         $product->save();
         return redirect()->route('assignment.index')->with('success', 'Assignment Added successfully');
 
@@ -64,7 +65,8 @@ class AssignmentController extends Controller
 
     public function update(Request $request, Assignment $assignment){
         $request->validate([
-            'project_name' => 'required'
+            'project_name' => 'required',
+            'employee_name' => 'required'
         ]);
 
         $file_name = $request->hidden_product_image;
@@ -89,6 +91,11 @@ class AssignmentController extends Controller
 
     }
 
+    public function detail($id) {
+        $assignment = Assignment::with('employee')->findOrFail($id);
+        return view('assignment.details', compact('assignment'));
+    }
+
     public function destroy($id){
         $assignment = Assignment::findOrFail($id);
         $image_path = public_path(). "/images/";
@@ -110,5 +117,6 @@ class AssignmentController extends Controller
         $task->delete();
         return redirect()->route('task.index', ['id' => $task->id])->with('success', 'Task Deleted!');
     }
+
 
 }

@@ -154,6 +154,7 @@ class AssignmentUserController extends Controller
 
     }
 
+
     public function destroy($id){
         $assignment = Assignment::findOrFail($id);
         $image_path = public_path(). "/images/";

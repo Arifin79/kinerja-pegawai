@@ -51,6 +51,7 @@
     <div class="text-wrapper-9 ">Detail Project</div>
 </div>
 
+  
 <script>
     window.deleteConfirm = function (e) {
         e.preventDefault();

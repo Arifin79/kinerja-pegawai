@@ -16,21 +16,30 @@
                 </div>
                 @if ($message = Session::get('success'))
                     <script type="text/javascript">
-                        const Toast = Swal.mixin({
+                        // const Toast = Swal.mixin({
+                        //     toast: true,
+                        //     position: "top-end",
+                        //     showConfirmButton: false,
+                        //     timer: 3000,
+                        //     timerProgressBar: true,
+                        //     didOpen: (toast) => {
+                        //         toast.onmouseenter = Swal.stopTimer;
+                        //         toast.onmouseleave = Swal.resumeTimer;
+                        //     }
+                        //     });
+                        //         Toast.fire({
+                        //         icon: "success",
+                        //         title: "{{ $message }}"
+                        // });
+                        Swal.fire({
                             toast: true,
                             position: "top-end",
+                            icon: "success",
+                            title:"{{ $message }}",
                             showConfirmButton: false,
                             timer: 3000,
                             timerProgressBar: true,
-                            didOpen: (toast) => {
-                                toast.onmouseenter = Swal.stopTimer;
-                                toast.onmouseleave = Swal.resumeTimer;
-                            }
-                            });
-                                Toast.fire({
-                                icon: "success",
-                                title: "{{ $message }}"
-                        });
+                        })
                     </script>
                 @endif
                 <div class="table">
@@ -61,6 +70,7 @@
                         <p>Project Type</p>
                         <p>Customer Name</p>
                         <p>Customer Type</p>
+                        <p>Employee Name</p>
                         <p>Deadline</p>
                         <p>Image</p>
                         <p>Actions</p>
@@ -73,9 +83,9 @@
                                 <p style="padding-top: 15px">{{ $product->project_type }}</p>
                                 <p style="padding-top: 15px">{{ $product->customer_name }}</p>
                                 <p style="padding-top: 15px">{{ $product->customer_type }}</p>
+                                <p style="padding-top: 15px">{{ $product->employee_name }}</p>
                                 <p style="padding-top: 15px">{{ $product->deadline }}</p>
                                 <img style="margin-right:15px;" src="{{ asset('images/' . $product->image)}}"/>
-                                <p></p>
                                 <div style="display: flex">
                                     <a href="{{ route('assignment/edit', ['id' => $product->id]) }}" class="btn-link btn btn-success" style="padding-right:12px; padding-left:12px; padding-top:10px; margin-top: 0px; margin-right:15px;">
                                         <i class="fas fa-pencil-alt" ></i>

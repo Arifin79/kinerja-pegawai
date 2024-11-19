@@ -44,6 +44,8 @@
                             <input type="file" name="image" accept="image/*" onchange="showFile(event)">
                         </div>
                        <div>
+                            <label>Employee Name</label>
+                            <input type="text" class="input" name="employee_name" value="{{ $assignment->employee_name }}">
                             <label>Deadline</label>
                             <input type="date" name="deadline" value="{{ $assignment->deadline }}"/>
                             <hr>

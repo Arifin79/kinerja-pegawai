@@ -27,11 +27,11 @@
                     {{-- <img class="clock" src="{{ asset('images/clock.jpg') }}" /> --}}
                     <a href="{{ route('home.assignment-user/edit', ['id' => $product->id]) }}" method="POST" class="btn-show">Detail</a>
                 </div>
-
             @endforeach
         </div>
     </div>
     <div class="text-wrapper-7">Task</div>
 </div>
+
 
 @endsection
