@@ -3,7 +3,7 @@
 <link rel="dns-prefetch" href="//fonts.bunny.net">
 <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
-<link rel="stylesheet" href={{ asset('css/assigment/create.css') }}>
+<link rel="stylesheet" href= {{ asset('css/assigment/create.css') }}>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @section('content')
 
@@ -15,7 +15,11 @@
           {{-- <img class="clock" src="{{ asset('images/clock.png') }}" /> --}}
         </div>
         <div class="div">Send Task</div>
-        {{-- <div class="text-wrapper-2">{{ $assignment->customer_type}}</div> --}}
+        <div class="div">
+          {{-- @foreach ($assignment as $product)
+              <p style="padding-top: 25px">{{ $product->employee_name }}</p>
+          @endforeach --}}
+        </div>
         <img class="line" src="img/line-5.svg" />
         <div class="overlap-group-wrapper">
           <div class="overlap-group">

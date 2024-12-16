@@ -107,6 +107,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/assignment-user/edit/{id}', [AssignmentUserController::class, 'edit'])->name('assignment-user/edit');
         Route::get('/assignment-user/edit/{id}', [AssignmentUserController::class, 'taskIndex'])->name('assignment-user/edit');
         Route::delete('/assignment-user/edit/{id}', [AssignmentUserController::class, 'destroyer'])->name('assignment-user/destroyer');
+        Route::get('assignment/{id}', [AssignmentController::class, 'show'])->name('assignment.show');
+        Route::get('/assignment-user/{id}', [AssignmentUserController::class, 'showTask'])->name('assignment-user.show');
+
+
 
         Route::get('/information-user', [InformationUserController::class, 'index'])->middleware('auth')->name('information-user');
         Route::get('/information-user/index', [InformationUserController::class, 'index'])->middleware('auth')->name('information-user.index');
@@ -125,9 +129,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
 
-Route::middleware('guest')->group(function () {
+    Route::middleware('guest')->group(function () {
     // auth
     Route::get('/login', [AuthController::class, 'index'])->name('auth.login');
     Route::post('/login', [AuthController::class, 'authenticate']);
+
+    
+
 });
 

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('project_type')->nullable();
             $table->string('customer_name')->nullable();
             $table->string('customer_type')->nullable();
+            $table->string('employee_name')->nullable();
             $table->date('deadline')->nullable();
             $table->string('file')->nullable();
             $table->string('image')->nullable();

@@ -31,5 +31,5 @@ Route::put('/update/{id}', [ProductController::class, 'update']);
 Route::delete('/delete/{id}', [ProductController::class, 'delete']);
 Route::post('/login', [LoginController::class, "index"])->name('login');
 Route::get('/history', [PresenceController::class, 'index']);
-Route::post('/check-proximity', [LocationController::class, 'checkProximity'])->name('check.proximity');
 Route::get('/location', [LocationController::class, 'index']);
+

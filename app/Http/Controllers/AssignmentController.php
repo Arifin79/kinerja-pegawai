@@ -31,6 +31,7 @@ class AssignmentController extends Controller
     {
         return view('assignment.create');
     }
+    
 
     public function store(Request $request){
 
@@ -50,8 +51,8 @@ class AssignmentController extends Controller
         $product->project_type = $request->project_type;
         $product->customer_name = $request->customer_name;
         $product->customer_type = $request->customer_type;
-        $product->deadline = $request->deadline;
         $product->employee_name = $request->employee_name;
+        $product->deadline = $request->deadline;
         $product->image = $file_name;
         $product->save();
         return redirect()->route('assignment.index')->with('success', 'Assignment Added successfully');
@@ -82,6 +83,7 @@ class AssignmentController extends Controller
         $assignment->project_type = $request->project_type;
         $assignment->customer_name = $request->customer_name;
         $assignment->customer_type = $request->customer_type;
+        $assignment->employee_name = $request->employee_name;
         $assignment->deadline = $request->deadline;
         $assignment->image = $file_name;
 
@@ -93,7 +95,9 @@ class AssignmentController extends Controller
 
     public function detail($id) {
         $assignment = Assignment::with('employee')->findOrFail($id);
-        return view('assignment.details', compact('assignment'));
+        $task = Task::where('assignment_id', $id)->with('employee')->get();
+
+        return view('assignment.details', compact('assignment', 'tasks'));
     }
 
     public function destroy($id){
@@ -118,5 +122,15 @@ class AssignmentController extends Controller
         return redirect()->route('task.index', ['id' => $task->id])->with('success', 'Task Deleted!');
     }
 
+    public function show($id)
+    {
+    
+    $assignment = Assignment::findOrFail($id);
+    return view('assignment.show', compact('assignment'));
+    
+    }
+
+
+   
 
 }

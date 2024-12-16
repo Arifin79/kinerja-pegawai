@@ -99,6 +99,13 @@
 
                                     </form>
                                 </div>
+
+                                {{-- <div class="assignment-item">
+                                    <p>{{ $product->project_name }}</p>
+                                    <p>{{ $product->employee_name }}</p>
+                                    <a href="{{ route('assignment.show', $product->id) }}">Detail</a>
+                                </div>
+                                 --}}
                             @endforeach
                         @else
                             <p>product not found</p>
