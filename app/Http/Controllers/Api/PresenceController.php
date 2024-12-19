@@ -13,7 +13,7 @@ class PresenceController extends Controller
         
         return response()->json([
             'success' => true,
-            'data'    => $history    
+            'data'    => $history
         ], 200);
     }
 }
