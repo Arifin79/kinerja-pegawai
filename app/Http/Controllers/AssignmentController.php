@@ -12,7 +12,6 @@ class AssignmentController extends Controller
 {
     public function index(Request $request)
     {
-        $assignment = Assignment::orderby('created_at')->get();
         $keyword = $request->get('search');
         $perPage = 5;
 
@@ -129,8 +128,4 @@ class AssignmentController extends Controller
     return view('assignment.show', compact('assignment'));
     
     }
-
-
-   
-
 }
