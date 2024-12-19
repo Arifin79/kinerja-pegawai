@@ -94,8 +94,7 @@ class AssignmentController extends Controller
 
     public function detail($id) {
         $assignment = Assignment::with('employee')->findOrFail($id);
-        $task = Task::where('assignment_id', $id)->with('employee')->get();
-
+        $tasks = Task::where('assignment_id', $id)->with('employee')->get();
         return view('assignment.details', compact('assignment', 'tasks'));
     }
 
@@ -103,7 +102,7 @@ class AssignmentController extends Controller
         $assignment = Assignment::findOrFail($id);
         $image_path = public_path(). "/images/";
         $image = $image_path. $assignment->image;
-        if(file_exists($image)){
+        if(file_exists($image)) {
             @unlink($image);
         }
         $assignment->delete();
