@@ -37,6 +37,6 @@ class LoginController extends Controller
             'user'    => auth()->guard('api')->user(),
             'token'   => $token
         ], 200);
-    }   
+    }
 }
 
