@@ -7,33 +7,22 @@ use App\Models\Task;
 
 class AssignmentUserController extends Controller
 {
-    //
+
     public function index(Request $request)
     {
-        $task = Task::orderby('created_at')->get();
         $keyword = $request->get('search');
         $perPage = 5;
 
-        if(!empty($keyword)){
-            $task = Task::where('title', 'LIKE', "%$keyword%")
-                        ->orWhere('name', 'LIKE', "%$keyword%")
-                        ->latest()->paginate($perPage);
-        } else {
-            $task = Task::latest()->paginate($perPage);
-        }
-        $assignment = Assignment::orderby('created_at')->get();
-        $keyword = $request->get('search');
-        $perPage = 5;
+        $taskQuery = Task::query();
 
-        if(!empty($keyword)){
-            $assignment = Assignment::where('project_name', 'LIKE', "%$keyword%")
-                        ->orWhere('customer_name', 'LIKE', "%$keyword%")
-                        ->latest()->paginate($perPage);
-        } else {
-            $assignment = Assignment::latest()->paginate($perPage);
+        if (!empty($keyword)) {
+            $taskQuery->where('title', 'LIKE', "%$keyword%")
+                      ->orWhere('name', 'LIKE', "%$keyword%");
         }
 
-        return view ('assignment-user.index', ['assignment' => $assignment, 'task' => $task])->with('i', (request()->input('page', 1)-1) *5);
+        $task = $taskQuery->latest()->paginate($perPage);
+
+        return view('tasks.index', compact('task'));
     }
 
     public function taskIndex(Request $request, $id)
@@ -99,7 +88,7 @@ class AssignmentUserController extends Controller
     public function taskStore(Request $request){
 
         $product = new Task;
-        $producti = new Assignment;
+        $product = new Assignment;
 
         // $request->validate([
         //     'name' => 'required',
@@ -109,7 +98,7 @@ class AssignmentUserController extends Controller
         $file_name = time() . '.' . $request->image->getClientOriginalExtension();
         $request->image->move(public_path('images'), $file_name);
 
-        $producti->id = $request->id;
+        $product->id = $request->id;
         $product->id = $request->id;
         $product->name = $request->name;
         $product->title = $request->title;
@@ -154,7 +143,6 @@ class AssignmentUserController extends Controller
         return redirect()->route('assignment-user.index')->with('success', 'Product Has Been Updated Successfully');
 
     }
-
 
     public function destroy($id){
         $assignment = Assignment::findOrFail($id);

@@ -70,23 +70,22 @@ class AssignmentController extends Controller
         ]);
 
         $file_name = $request->hidden_product_image;
-
-        if($request->image != ""){
+        if($request->hasFile('image')){
             $file_name = time() . '.' . request()->image->getClientOriginalExtension();
             request()->image->move(public_path('images'), $file_name);
         }
 
-        $assignment = Assignment::find($request->hidden_id);
+        $existingAssignment = Assignment::find($request->hidden_id);
 
-        $assignment->project_name = $request->project_name;
-        $assignment->project_type = $request->project_type;
-        $assignment->customer_name = $request->customer_name;
-        $assignment->customer_type = $request->customer_type;
-        $assignment->employee_name = $request->employee_name;
-        $assignment->deadline = $request->deadline;
-        $assignment->image = $file_name;
+        $existingAssignment->project_name = $request->project_name;
+        $existingAssignment->project_type = $request->project_type;
+        $existingAssignment->customer_name = $request->customer_name;
+        $existingAssignment->customer_type = $request->customer_type;
+        $existingAssignment->employee_name = $request->employee_name;
+        $existingAssignment->deadline = $request->deadline;
+        $existingAssignment->image = $file_name;
 
-        $assignment->save();
+        $existingAssignment->save();
 
         return redirect()->route('assignment.index')->with('success', 'Product Has Been Updated Successfully');
 
