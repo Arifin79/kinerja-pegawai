@@ -27,18 +27,19 @@ class AssignmentUserController extends Controller
 
     public function taskIndex(Request $request, $id)
     {
-        $assignment = Assignment::find($id);
-        $task = Task::orderby('created_at')->get();
-        $keyword = $request->get('search');
         $perPage = 5;
+        $keyword = $request->get('search');
 
-        if(!empty($keyword)){
-            $task = Task::where('title', 'LIKE', "%$keyword%")
-                        ->orWhere('name', 'LIKE', "%$keyword%")
-                        ->latest()->paginate($perPage);
-        } else {
-            $task = Task::latest()->paginate($perPage);
+        $taskQuery = Task::query();
+
+        if (!empty($keyword)) {
+            $taskQuery->where('title', 'LIKE', "%$keyword%")
+                      ->orWhere('name', 'LIKE', "%$keyword%");
         }
+
+        $task = $taskQuery->latest()->paginate($perPage);
+
+        return view('tasks.taskIndex', compact('task', 'id'));
 
         $assignment = Assignment::orderby('created_at')->get();
         $keyword = $request->get('search');
