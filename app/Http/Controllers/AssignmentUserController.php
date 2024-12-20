@@ -90,28 +90,20 @@ class AssignmentUserController extends Controller
 
     public function taskStore(Request $request)
     {
-
-        $product = new Task;
-        $product = new Assignment;
-
-        // $request->validate([
-        //     'name' => 'required',
-        //     'image' => 'required|mimes:png,jpg,jpeg,gif,svg|max:2028'
-        // ]);
-
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'image' => 'required|mimes:png,jpg,jpeg,gif,svg|max:2028',
+        ]);
+    
         $file_name = time() . '.' . $request->image->getClientOriginalExtension();
-        $request->image->move(public_path('images'), $file_name);
-
-        $product->id = $request->id;
-        $product->id = $request->id;
-        $product->name = $request->name;
-        $product->title = $request->title;
-        $product->date = $request->date;
-        $product->image = $file_name;
-
-        $product->save();
-
-        return redirect()->route('home.assignment-user/edit', ['id' => $product->id])->with('success', 'Assignment Added successfully');
+        $request->image->move(storage_path('app/public/images'), $file_name);
+    
+        $task = new Task();
+        $task->name = $request->name;
+        $task->image = $file_name;
+        $task->save();
+    
+        return redirect()->route('tasks.index')->with('success', 'Task berhasil disimpan!');
     }
 
     public function edit($id)
