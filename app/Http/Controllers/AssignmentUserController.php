@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Assignment;
 use Illuminate\Http\Request;
 use App\Models\Task;
@@ -17,7 +18,7 @@ class AssignmentUserController extends Controller
 
         if (!empty($keyword)) {
             $taskQuery->where('title', 'LIKE', "%$keyword%")
-                      ->orWhere('name', 'LIKE', "%$keyword%");
+                ->orWhere('name', 'LIKE', "%$keyword%");
         }
 
         $task = $taskQuery->latest()->paginate($perPage);
@@ -34,28 +35,30 @@ class AssignmentUserController extends Controller
 
         if (!empty($keyword)) {
             $taskQuery->where('title', 'LIKE', "%$keyword%")
-                      ->orWhere('name', 'LIKE', "%$keyword%");
+                ->orWhere('name', 'LIKE', "%$keyword%");
         }
 
         $task = $taskQuery->latest()->paginate($perPage);
 
         return view('tasks.taskIndex', compact('task', 'id'));
 
-        $assignment = Assignment::orderby('created_at')->get();
         $keyword = $request->get('search');
-        $perPage = 5;
+        $perPage = config('pagination.per_page', 5);
 
-        if(!empty($keyword)){
+        if (!empty($keyword)) {
             $assignment = Assignment::where('project_name', 'LIKE', "%$keyword%")
-                        ->orWhere('customer_name', 'LIKE', "%$keyword%")
-                        ->latest()->paginate($perPage);
+                ->orWhere('customer_name', 'LIKE', "%$keyword%")
+                ->latest()
+                ->paginate($perPage);
         } else {
             $assignment = Assignment::latest()->paginate($perPage);
         }
-        return view ('assignment-user/edit', ['assignment' => $assignment, 'task' => $task])->with('i', (request()->input('page', 1)-1) *5);
+
+        return view('tasks.taskIndex', compact('assignment', 'keyword', 'perPage'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $product = new Assignment;
 
@@ -78,7 +81,6 @@ class AssignmentUserController extends Controller
 
         $product->save();
         return redirect()->route('assignment-user.index')->with('success', 'Assignment Added successfully');
-
     }
 
     public function create()
@@ -86,7 +88,8 @@ class AssignmentUserController extends Controller
         return view('assignment-user/create');
     }
 
-    public function taskStore(Request $request){
+    public function taskStore(Request $request)
+    {
 
         $product = new Task;
         $product = new Assignment;
@@ -111,21 +114,23 @@ class AssignmentUserController extends Controller
         return redirect()->route('home.assignment-user/edit', ['id' => $product->id])->with('success', 'Assignment Added successfully');
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $assignment = Assignment::findOrFail($id);
         $task = Task::where('id', $id)->orderBy('created_at')->get();
         dd($task);
         return view('assignment-user/edit', ['assignment' => $assignment, 'task' => $task]);
     }
 
-    public function update(Request $request, Assignment $assignment){
+    public function update(Request $request, Assignment $assignment)
+    {
         $request->validate([
             'project_name' => 'required'
         ]);
 
         $file_name = $request->hidden_product_image;
 
-        if($request->image != ""){
+        if ($request->image != "") {
             $file_name = time() . '.' . request()->image->getClientOriginalExtension();
             request()->image->move(public_path('images'), $file_name);
         }
@@ -142,32 +147,34 @@ class AssignmentUserController extends Controller
         $assignment->save();
 
         return redirect()->route('assignment-user.index')->with('success', 'Product Has Been Updated Successfully');
-
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         $assignment = Assignment::findOrFail($id);
-        $image_path = public_path(). "/images/";
-        $image = $image_path. $assignment->image;
-        if(file_exists($image)){
+        $image_path = public_path() . "/images/";
+        $image = $image_path . $assignment->image;
+        if (file_exists($image)) {
             @unlink($image);
         }
         $assignment->delete();
         return redirect('home.assignment-user')->with('success', 'product Deleted!');
     }
 
-    public function destroyer($id){
+    public function destroyer($id)
+    {
         $task = Task::findOrFail($id);
-        $image_path = public_path(). "/images/";
-        $image = $image_path. $task->image;
-        if(file_exists($image)){
+        $image_path = public_path() . "/images/";
+        $image = $image_path . $task->image;
+        if (file_exists($image)) {
             @unlink($image);
         }
         $task->delete();
         return redirect()->route('home.assignment-user/edit', ['id' => $task->id])->with('success', 'Task Deleted!');
     }
 
-    public function showTask($id){
+    public function showTask($id)
+    {
         $task = Task::with('employee')->findOrFail($id);
         return view('assignment-user.details', compact('task'));
     }
