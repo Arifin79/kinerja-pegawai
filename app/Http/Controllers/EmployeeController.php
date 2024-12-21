@@ -24,18 +24,19 @@ class EmployeeController extends Controller
     public function edit()
     {
         $ids = request('ids');
-        if (!$ids)
+        if (!$ids) {
             return redirect()->back();
+        }
+
         $ids = explode('-', $ids);
 
-        // ambil data user yang hanya memiliki User::USER_ROLE_ID / role untuk karyawaan
+
         $employees = User::query()
             ->whereIn('id', $ids)
             ->get();
 
         return view('employees.edit', [
-            "title" => "Edit Data Karyawaan",
-            "employees" => $employees
+            'employees' => $employees
         ]);
     }
 }
