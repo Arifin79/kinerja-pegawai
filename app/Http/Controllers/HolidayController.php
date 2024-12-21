@@ -24,20 +24,15 @@ class HolidayController extends Controller
     public function edit()
     {
         $ids = request('ids');
-
         if (!$ids) {
             return redirect()->back();
         }
 
-        $ids = explode('-', $ids);
-
-        $holidays = Holiday::query()
-            ->whereIn('id', $ids)
-            ->get();
-
         return view('holidays.edit', [
             "title" => "Edit Data Hari Libur",
-            "holidays" => $holidays
+            "holidays" => Holiday::query()
+                ->whereIn('id', explode('-', $ids))
+                ->get(),
         ]);
     }
 }

@@ -27,16 +27,11 @@ class EmployeeController extends Controller
         if (!$ids) {
             return redirect()->back();
         }
-
         $ids = explode('-', $ids);
-
-
-        $employees = User::query()
-            ->whereIn('id', $ids)
-            ->get();
-
         return view('employees.edit', [
-            'employees' => $employees
+            'employees' => User::query()
+                ->whereIn('id', $ids)
+                ->get()
         ]);
     }
 }
