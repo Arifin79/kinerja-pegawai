@@ -8,25 +8,25 @@ use Carbon\Carbon;
 
 class InformationUserController extends Controller
 {
-    //
     public function index(Request $request)
     {
-        $information = Information::orderby('created_at')->get();
         $keyword = $request->get('search');
         $perPage = 5;
 
-        if(!empty($keyword)){
-            $information = Information::where('title', 'LIKE', "%$keyword%")
-                        ->orWhere('description', 'LIKE', "%$keyword%")
-                        ->latest()->paginate($perPage);
-        } else {
-            $information = Information::latest()->paginate($perPage);
+        $informationQuery = Information::query();
+
+        if (!empty($keyword)) {
+            $informationQuery->where('title', 'LIKE', "%$keyword%")
+                ->orWhere('description', 'LIKE', "%$keyword%");
         }
 
-        return view ('information-user.index', ['information' => $information])->with('i', (request()->input('page', 1)-1) *5);
+        $information = $informationQuery->latest()->paginate($perPage);
+
+        return view('information.index', compact('information'));
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $product = new Information;
 
@@ -37,6 +37,5 @@ class InformationUserController extends Controller
 
         $product->save();
         return redirect()->route('information-user.index')->with('success', 'Assignment Added successfully');
-
     }
 }
