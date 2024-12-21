@@ -23,38 +23,23 @@ class AssignmentUserController extends Controller
 
         $task = $taskQuery->latest()->paginate($perPage);
 
-        return view('tasks.index', compact('task'));
+        return view('task.index', compact('task'));
     }
 
     public function taskIndex(Request $request, $id)
     {
-        $perPage = 5;
-        $keyword = $request->get('search');
-
-        $taskQuery = Task::query();
-
-        if (!empty($keyword)) {
-            $taskQuery->where('title', 'LIKE', "%$keyword%")
-                ->orWhere('name', 'LIKE', "%$keyword%");
-        }
-
-        $task = $taskQuery->latest()->paginate($perPage);
-
-        return view('tasks.taskIndex', compact('task', 'id'));
-
         $keyword = $request->get('search');
         $perPage = config('pagination.per_page', 5);
 
         if (!empty($keyword)) {
-            $assignment = Assignment::where('project_name', 'LIKE', "%$keyword%")
+            $taskQuery = Task::query();
+            $taskQuery->where('project_name', 'LIKE', "%$keyword%")
                 ->orWhere('customer_name', 'LIKE', "%$keyword%")
-                ->latest()
-                ->paginate($perPage);
-        } else {
-            $assignment = Assignment::latest()->paginate($perPage);
+                ->orWhere('name', 'LIKE', "%$keyword%");
         }
+        $task = $taskQuery->latest()->paginate($perPage);
 
-        return view('tasks.taskIndex', compact('assignment', 'keyword', 'perPage'));
+        return view('tasks.taskIndex', compact('task', 'id'));
     }
 
     public function store(Request $request)
@@ -94,15 +79,15 @@ class AssignmentUserController extends Controller
             'name' => 'required|string|max:255',
             'image' => 'required|mimes:png,jpg,jpeg,gif,svg|max:2028',
         ]);
-    
+
         $file_name = time() . '.' . $request->image->getClientOriginalExtension();
         $request->image->move(storage_path('app/public/images'), $file_name);
-    
+
         $task = new Task();
         $task->name = $request->name;
         $task->image = $file_name;
         $task->save();
-    
+
         return redirect()->route('tasks.index')->with('success', 'Task berhasil disimpan!');
     }
 
