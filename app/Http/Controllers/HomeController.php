@@ -44,8 +44,8 @@ class HomeController extends Controller
             ->first();
 
         $data = [
-            'is_has_enter_today' => $isHasEnterToday, // sudah absen masuk
-            'is_not_out_yet' => $presences->where('presence_out_time', null)->isNotEmpty(), // belum absen pulang
+            'is_has_enter_today' => $isHasEnterToday, 
+            'is_not_out_yet' => $presences->where('presence_out_time', null)->isNotEmpty(), 
             'is_there_permission' => (bool) $isTherePermission,
             'is_permission_accepted' => $isTherePermission?->is_accepted ?? false
         ];
@@ -59,11 +59,10 @@ class HomeController extends Controller
             ->where('attendance_id', $attendance->id)
             ->get();
 
-        // untuku melihat karyawan yang tidak hadir
         $priodDate = CarbonPeriod::create($attendance->created_at->toDateString(), now()->toDateString())
             ->toArray();
 
-        foreach ($priodDate as $i => $date) { // get only stringdate
+        foreach ($priodDate as $i => $date) { 
             $priodDate[$i] = $date->toDateString();
         }
 
@@ -87,14 +86,12 @@ class HomeController extends Controller
         ]);
     }
 
-    // for qrcode
     public function sendEnterPresenceUsingQRCode()
     {
         $code = request('code');
         $attendance = Attendance::query()->where('code', $code)->first();
 
-        if ($attendance && $attendance->data->is_start && $attendance->data->is_using_qrcode) { // sama (harus) dengan view
-            // fix: user bisa absensi dengan tanggal yang sama, cek apakah user id attendance id dan presence date sudah ada
+        if ($attendance && $attendance->data->is_start && $attendance->data->is_using_qrcode) {
             Presence::create([
                 "user_id" => auth()->user()->id,
                 "attendance_id" => $attendance->id,
@@ -126,8 +123,7 @@ class HomeController extends Controller
                 "message" => "Terjadi masalah pada saat melakukan absensi."
             ], 400);
 
-        // jika absensi sudah jam pulang (is_end) dan tidak menggunakan qrcode (kebalikan)
-        if (!$attendance->data->is_end && !$attendance->data->is_using_qrcode) // sama (harus) dengan view
+        if (!$attendance->data->is_end && !$attendance->data->is_using_qrcode)
             return false;
 
         $presence = Presence::query()
@@ -137,13 +133,12 @@ class HomeController extends Controller
             ->where('presence_out_time', null)
             ->first();
 
-        if (!$presence) // hanya untuk sekedar keamanan (kemungkinan)
+        if (!$presence)
             return response()->json([
                 "success" => false,
                 "message" => "Terjadi masalah pada saat melakukan absensi."
             ], 400);
 
-        // untuk refresh if statement
         $this->data['is_not_out_yet'] = false;
         $presence->update(['presence_out_time' => now()->toTimeString()]);
 

@@ -10,19 +10,16 @@ class InformationController extends Controller
 {
     public function index(Request $request)
     {
-        $information = Information::orderby('created_at')->get();
         $keyword = $request->get('search');
         $perPage = 5;
 
-        if(!empty($keyword)){
-            $information = Information::where('title', 'LIKE', "%$keyword%")
-                        ->orWhere('description', 'LIKE', "%$keyword%")
-                        ->latest()->paginate($perPage);
-        } else {
-            $information = Information::latest()->paginate($perPage);
-        }
+        $information = !empty($keyword)
+            ? Information::where('title', 'LIKE', "%$keyword%")
+            ->orWhere('description', 'LIKE', "%$keyword%")
+            ->latest()->paginate($perPage)
+            : Information::latest()->paginate($perPage);
 
-        return view ('information.index', ['information' => $information])->with('i', (request()->input('page', 1)-1) *5);
+        return view('information.index', compact('information'));
     }
 
     public function create()
@@ -30,7 +27,8 @@ class InformationController extends Controller
         return view('information.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $product = new Information;
 
@@ -41,15 +39,16 @@ class InformationController extends Controller
 
         $product->save();
         return redirect()->route('information.index')->with('success', 'Assignment Added successfully');
-
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
         $information = Information::findOrFail($id);
         return view('information.edit', ['information' => $information]);
     }
 
-    public function update(Request $request, Information $information){
+    public function update(Request $request, Information $information)
+    {
         $request->validate([
             'title' => 'required'
         ]);
@@ -63,11 +62,11 @@ class InformationController extends Controller
         $product->save();
 
         return redirect()->route('information.index')->with('success', 'Product Has Been Updated Successfully');
-
     }
 
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         $information = Information::findOrFail($id);
         $information->delete();
         return redirect('information')->with('success', 'product Deleted!');
