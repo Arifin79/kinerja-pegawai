@@ -24,8 +24,11 @@ class HolidayController extends Controller
     public function edit()
     {
         $ids = request('ids');
-        if (!$ids)
+
+        if (!$ids) {
             return redirect()->back();
+        }
+
         $ids = explode('-', $ids);
 
         $holidays = Holiday::query()
