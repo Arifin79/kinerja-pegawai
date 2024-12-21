@@ -95,42 +95,60 @@ class AssignmentUserController extends Controller
     {
         $assignment = Assignment::findOrFail($id);
         $task = Task::where('id', $id)->orderBy('created_at')->get();
-        dd($task);
         return view('assignment-user/edit', ['assignment' => $assignment, 'task' => $task]);
     }
 
     public function update(Request $request, Assignment $assignment)
     {
+        $this->validateRequest($request);
+
+        $file_name = $this->handleFileUpload($request);
+
+        $this->updateAssignment($request, $assignment, $file_name);
+
+        return redirect()->route('assignment-user.index')
+            ->with('success', 'Product Has Been Updated Successfully');
+    }
+
+    private function validateRequest($request)
+    {
         $request->validate([
-            'project_name' => 'required'
+            'project_name' => 'required',
         ]);
+    }
 
-        $file_name = $request->hidden_product_image;
-
+    private function handleFileUpload($request)
+    {
         if ($request->image != "") {
-            $file_name = time() . '.' . request()->image->getClientOriginalExtension();
-            request()->image->move(public_path('images'), $file_name);
+            $file_name = time() . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('images'), $file_name);
+            return $file_name;
         }
+        return $request->hidden_product_image;
+    }
 
-        $assignment = Assignment::find($request->hidden_id);
+    private function updateAssignment($request, $assignment, $file_name)
+    {
+        $assignmentModel = Assignment::find($request->hidden_id);
 
-        $assignment->project_name = $request->project_name;
-        $assignment->project_type = $request->project_type;
-        $assignment->customer_name = $request->customer_name;
-        $assignment->customer_type = $request->customer_type;
-        $assignment->deadline = $request->deadline;
-        $assignment->image = $file_name;
+        $assignmentModel->project_name = $request->project_name;
+        $assignmentModel->project_type = $request->project_type;
+        $assignmentModel->customer_name = $request->customer_name;
+        $assignmentModel->customer_type = $request->customer_type;
+        $assignmentModel->deadline = $request->deadline;
+        $assignmentModel->image = $file_name;
 
-        $assignment->save();
+        $assignmentModel->save();
 
         return redirect()->route('assignment-user.index')->with('success', 'Product Has Been Updated Successfully');
     }
+
 
     public function destroy($id)
     {
         $assignment = Assignment::findOrFail($id);
         $image_path = public_path() . "/images/";
-        $image = $image_path . $assignment->image;
+        $image = $image_path . DIRECTORY_SEPARATOR . $assignment->image;
         if (file_exists($image)) {
             @unlink($image);
         }
@@ -142,7 +160,7 @@ class AssignmentUserController extends Controller
     {
         $task = Task::findOrFail($id);
         $image_path = public_path() . "/images/";
-        $image = $image_path . $task->image;
+        $image = $image_path . DIRECTORY_SEPARATOR . $task->image;
         if (file_exists($image)) {
             @unlink($image);
         }
