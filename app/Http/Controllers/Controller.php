@@ -15,7 +15,6 @@ class Controller extends BaseController
 
     public function getQrCode(?string $code): string
     {
-        $qrcode = "data:image/svg+xml;base64," . base64_encode(QrCode::size(300)->style('round')->generate($code));
-        return $qrcode;
+        return "data:image/svg+xml;base64," . base64_encode(QrCode::size(300)->style('round')->generate($code));
     }
 }
