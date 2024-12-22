@@ -9,22 +9,20 @@ class TaskController extends Controller
 {
     public function index(Request $request)
     {
-        $task = Task::orderby('created_at')->get();
         $keyword = $request->get('search');
         $perPage = 5;
 
-        if(!empty($keyword)){
-            $task = Task::where('title', 'LIKE', "%$keyword%")
-                        ->orWhere('name', 'LIKE', "%$keyword%")
-                        ->latest()->paginate($perPage);
-        } else {
-            $task = Task::latest()->paginate($perPage);
-        }
+        $task = !empty($keyword)
+            ? Task::where('title', 'LIKE', "%$keyword%")
+            ->orWhere('name', 'LIKE', "%$keyword%")
+            ->latest()->paginate($perPage)
+            : Task::latest()->paginate($perPage);
 
-        return view ('task.index', ['task' => $task])->with('i', (request()->input('page', 1)-1) *5);
+        return view('tasks.index',['tasks' => $task,]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $product = new Task;
 
@@ -45,5 +43,4 @@ class TaskController extends Controller
 
         return redirect()->route('assignment/edit')->with('success', 'Assignment Added successfully');
     }
-
 }
