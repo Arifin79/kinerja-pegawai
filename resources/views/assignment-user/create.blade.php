@@ -17,18 +17,21 @@
                         <h4 class="add">Add Assignment</h4>
                     </div>
                     <div class="card">
-                       <div>
-                            <label hidden>Name</label>
-                            <input hidden type="text" name="name" value="{{ Auth::user()->name }}">
-                            <label>Project Name</label>
-                            <input type="text" name="title" >
-                            <label>Upload Time</label>
-                            <input type="date" name="date" />
-                            <label>File Project</label>
+                        <div>
+                            <label for="name" hidden>Name</label>
+                            <input hidden type="text" id="name" name="name" value="{{ Auth::user()->name }}">
+                    
+                            <label for="project-name">Project Name</label>
+                            <input type="text" id="project-name" name="title">
+                    
+                            <label for="upload-time">Upload Time</label>
+                            <input type="date" id="upload-time" name="date" />
+                    
+                            <label for="file-upload">File Project</label>
                             <img src="" alt="" class="img-product" id="file-preview" />
-                            <input type="file" name="image" accept="image/*" onchange="showFile(event)">
+                            <input type="file" id="file-upload" name="image" accept="image/*" onchange="showFile(event)">
                         </div>
-                    </div>
+                    </div>                    
                     <div class="titlebar">
                         <h1></h1>
                         <button type="submit">Save</button>
