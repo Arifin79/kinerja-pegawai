@@ -26,7 +26,6 @@ class PresenceController extends Controller
     {
         $attendance->load(['positions', 'presences']);
 
-        // dd($qrcode);
         return view('presences.show', [
             "title" => "Data Detail Kehadiran",
             "attendance" => $attendance,
