@@ -18,18 +18,19 @@ class TaskController extends Controller
             ->latest()->paginate($perPage)
             : Task::latest()->paginate($perPage);
 
-        return view('tasks.index',['tasks' => $task,]);
+        return view('tasks.index', ['tasks' => $task,]);
     }
 
     public function store(Request $request)
     {
-
         $product = new Task;
 
-        // $request->validate([
-        //     'name' => 'required',
-        //     'image' => 'required|mimes:png,jpg,jpeg,gif,svg|max:2028'
-        // ]);
+        $request->validate([
+            'name' => 'required',
+            'image' => 'required|mimes:png,jpg,jpeg,gif,svg|max:2028',
+            'title' => 'required',
+            'date' => 'required|date',
+        ]);
 
         $file_name = time() . '.' . $request->image->getClientOriginalExtension();
         $request->image->move(public_path('images'), $file_name);
