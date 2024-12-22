@@ -127,7 +127,7 @@ class AssignmentUserController extends Controller
         return $request->hidden_product_image;
     }
 
-    private function updateAssignment($request, $assignment, $file_name)
+    private function updateAssignment($request, $file_name)
     {
         $assignmentModel = Assignment::find($request->hidden_id);
 

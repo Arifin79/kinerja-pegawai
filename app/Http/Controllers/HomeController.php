@@ -44,8 +44,8 @@ class HomeController extends Controller
             ->first();
 
         $data = [
-            'is_has_enter_today' => $isHasEnterToday, 
-            'is_not_out_yet' => $presences->where('presence_out_time', null)->isNotEmpty(), 
+            'is_has_enter_today' => $isHasEnterToday,
+            'is_not_out_yet' => $presences->where('presence_out_time', null)->isNotEmpty(),
             'is_there_permission' => (bool) $isTherePermission,
             'is_permission_accepted' => $isTherePermission?->is_accepted ?? false
         ];
@@ -62,7 +62,7 @@ class HomeController extends Controller
         $priodDate = CarbonPeriod::create($attendance->created_at->toDateString(), now()->toDateString())
             ->toArray();
 
-        foreach ($priodDate as $i => $date) { 
+        foreach ($priodDate as $i => $date) {
             $priodDate[$i] = $date->toDateString();
         }
 
@@ -112,39 +112,58 @@ class HomeController extends Controller
         ], 400);
     }
 
+    private const ERROR_MESSAGE = "Terjadi masalah pada saat melakukan absensi.";
+    protected $data = [];
+
     public function sendOutPresenceUsingQRCode()
     {
         $code = request('code');
         $attendance = Attendance::query()->where('code', $code)->first();
 
-        if (!$attendance)
-            return response()->json([
-                "success" => false,
-                "message" => "Terjadi masalah pada saat melakukan absensi."
-            ], 400);
+        if (!$this->isValidAttendance($attendance)) {
+            return $this->jsonErrorResponse();
+        }
 
-        if (!$attendance->data->is_end && !$attendance->data->is_using_qrcode)
-            return false;
+        $presence = $this->getPresence($attendance);
 
-        $presence = Presence::query()
+        if (!$presence) {
+            return $this->jsonErrorResponse();
+        }
+
+        $this->data['is_not_out_yet'] = false;
+        $presence->update(['presence_out_time' => now()->toTimeString()]);
+
+        return $this->jsonSuccessResponse("Absensi keluar berhasil dilakukan.");
+    }
+
+    private function isValidAttendance($attendance): bool
+    {
+        return $attendance && (!$attendance->data->is_end && !$attendance->data->is_using_qrcode);
+    }
+
+    private function getPresence($attendance)
+    {
+        return Presence::query()
             ->where('user_id', auth()->user()->id)
             ->where('attendance_id', $attendance->id)
             ->where('presence_date', now()->toDateString())
             ->where('presence_out_time', null)
             ->first();
+    }
 
-        if (!$presence)
-            return response()->json([
-                "success" => false,
-                "message" => "Terjadi masalah pada saat melakukan absensi."
-            ], 400);
+    private function jsonErrorResponse()
+    {
+        return response()->json([
+            "success" => false,
+            "message" => self::ERROR_MESSAGE,
+        ], 400);
+    }
 
-        $this->data['is_not_out_yet'] = false;
-        $presence->update(['presence_out_time' => now()->toTimeString()]);
-
+    private function jsonSuccessResponse(string $message)
+    {
         return response()->json([
             "success" => true,
-            "message" => "Atas nama '" . auth()->user()->name . "' berhasil melakukan absensi pulang."
+            "message" => $message,
         ]);
     }
 }
