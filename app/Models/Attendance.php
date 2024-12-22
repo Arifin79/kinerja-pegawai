@@ -30,31 +30,34 @@ class Attendance extends Model
     protected function data(): Attribute
     {
         return Attribute::make(
-            get: function ($value) {
-                $now = now();
-                $startTime = Carbon::parse($this->start_time);
-                $batasStartTime = Carbon::parse($this->batas_start_time);
-
-                $endTime = Carbon::parse($this->end_time);
-                $batasEndTime = Carbon::parse($this->batas_end_time);
-
-                $isHolidayToday = Holiday::query()
-                    ->where('holiday_date', now()->toDateString())
-                    ->get();
-
-                return (object) [
-                    "start_time" => $this->start_time,
-                    "batas_start_time" => $this->batas_start_time,
-                    "end_time" => $this->end_time,
-                    "batas_end_time" => $this->batas_end_time,
-                    "now" => $now->format("H:i:s"),
-                    "is_start" => $startTime <= $now && $batasStartTime >= $now,
-                    "is_end" => $endTime <= $now && $batasEndTime >= $now,
-                    'is_using_qrcode' => $this->code ? true : false,
-                    'is_holiday_today' => $isHolidayToday->isNotEmpty()
-                ];
-            },
+            get: fn() => $this->calculateData()
         );
+    }
+
+    private function calculateData()
+    {
+        $now = now();
+        $startTime = Carbon::parse($this->start_time);
+        $batasStartTime = Carbon::parse($this->batas_start_time);
+        $endTime = Carbon::parse($this->end_time);
+        $batasEndTime = Carbon::parse($this->batas_end_time);
+        $isHolidayToday = $this->isHolidayToday();
+
+        return [
+            'now' => $now,
+            'start_time' => $startTime,
+            'batas_start_time' => $batasStartTime,
+            'end_time' => $endTime,
+            'batas_end_time' => $batasEndTime,
+            'is_holiday_today' => $isHolidayToday,
+        ];
+    }
+
+    private function isHolidayToday(): bool
+    {
+        return Holiday::query()
+            ->where('holiday_date', now()->toDateString())
+            ->exists();
     }
 
     public function scopeForCurrentUser($query, $userPositionId)
