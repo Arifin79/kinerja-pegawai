@@ -24,8 +24,9 @@ class PositionController extends Controller
     public function edit()
     {
         $ids = request('ids');
-        if (!$ids)
+        if (!$ids) {
             return redirect()->back();
+        }
         $ids = explode('-', $ids);
 
         $positions = Position::query()->whereIn('id', $ids)->get();
