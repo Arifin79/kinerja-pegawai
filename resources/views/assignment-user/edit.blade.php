@@ -8,19 +8,16 @@
 @section('content')
 
 <div class="detail-project">
-    <div class="overlap">
+  <div class="overlap">
       <div class="frame">
-        <div class="group">
-          {{-- <div class="text-wrapper">{{ $assignment->deadline}}</div> --}}
-          {{-- <img class="clock" src="{{ asset('images/clock.png') }}" /> --}}
-        </div>
-        <div class="div">Send Task</div>
-        <div class="div">
-          {{-- @foreach ($assignment as $product)
-              <p style="padding-top: 25px">{{ $product->employee_name }}</p>
-          @endforeach --}}
-        </div>
-        <img class="line" src="img/line-5.svg" />
+          <div class="group">
+              <img class="clock" src="{{ asset('images/clock.png') }}" alt="Clock Icon" />
+          </div>
+          <div class="div">Send Task</div>
+          <div class="div">
+              <p style="padding-top: 25px">{{ $assignment->employee_name }}</p>
+          </div>
+          <img class="line" src="img/line-5.svg" alt="Decorative Line" />
         <div class="overlap-group-wrapper">
           <div class="overlap-group">
             <a href="{{ route('home.assignment-user/create') }}" class="text-wrapper-3">Add Assignment</a>
