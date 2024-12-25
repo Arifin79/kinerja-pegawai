@@ -2,5 +2,5 @@ projectKey=Kinerja-Pegawai
 serverUrl=http://localhost:9000
 serverVersion=10.7.0.96327
 dashboardUrl=http://localhost:9000/dashboard?id=Kinerja-Pegawai
-ceTaskId=a708c4da-dfd2-4187-b3cb-9d540d8dc684
-ceTaskUrl=http://localhost:9000/api/ce/task?id=a708c4da-dfd2-4187-b3cb-9d540d8dc684
+ceTaskId=0e9f552e-5a81-4b4c-81a0-b553416eaf9a
+ceTaskUrl=http://localhost:9000/api/ce/task?id=0e9f552e-5a81-4b4c-81a0-b553416eaf9a

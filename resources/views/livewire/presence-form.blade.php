@@ -7,7 +7,7 @@
     @else
 
     {{-- jika tidak menggunakan qrcode (button) dan karyawan saat ini tidak menekan tombol izin --}}
-    @if (!$attendance->data->is_using_qrcode && !$data['is_there_permission'])
+    {{-- @if (!$attendance->data->is_using_qrcode && !$data['is_there_permission']) --}}
 
     {{-- jika belum absen dan absen masuk sudah dimulai --}}
     @if ($attendance->data->is_start && !$data['is_has_enter_today'])
@@ -56,6 +56,6 @@
     </div>
     @endif
 
-    @endif
+    {{-- @endif --}}
 
 </div>

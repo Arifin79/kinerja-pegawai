@@ -7,10 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Task;
 
 class AssignmentUserController extends Controller
-{
-
+{   
     public function index(Request $request)
-    {
+    {   
         $keyword = $request->get('search');
         $perPage = 5;
 
@@ -173,4 +172,4 @@ class AssignmentUserController extends Controller
         $task = Task::with('employee')->findOrFail($id);
         return view('assignment-user.details', compact('task'));
     }
-}
+} 

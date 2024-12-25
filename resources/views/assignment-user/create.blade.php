@@ -28,12 +28,12 @@
                             <input type="date" id="upload-time" name="date" />
                     
                             <label for="file-upload">File Project</label>
-                            <img src="" alt="" class="img-product" id="file-preview" />
+                            <img src="" alt="Preview of uploaded file" class="img-product" id="file-preview" />
                             <input type="file" id="file-upload" name="image" accept="image/*" onchange="showFile(event)">
                         </div>
-                    </div>                    
+                    </div>
                     <div class="titlebar">
-                        <h1></h1>
+                        <h1>Assignment Submission</h1>
                         <button type="submit">Save</button>
                     </div>
                 </form>

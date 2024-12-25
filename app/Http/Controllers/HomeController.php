@@ -50,9 +50,11 @@ class HomeController extends Controller
             'is_permission_accepted' => $isTherePermission?->is_accepted ?? false
         ];
 
-        $holiday = $attendance->data->is_holiday_today ? Holiday::query()
+        $holiday = isset($attendance['data']['is_holiday_today']) && $attendance['data']['is_holiday_today']
+            ? Holiday::query()
             ->where('holiday_date', now()->toDateString())
-            ->first() : false;
+            ->first()
+            : false;
 
         $history = Presence::query()
             ->where('user_id', auth()->user()->id)

@@ -18,7 +18,7 @@ class TaskController extends Controller
             ->latest()->paginate($perPage)
             : Task::latest()->paginate($perPage);
 
-        return view('tasks.index', ['tasks' => $task,]);
+        return view('task.index', ['tasks' => $task,]);
     }
 
     public function store(Request $request)
