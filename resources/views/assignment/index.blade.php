@@ -78,28 +78,24 @@
                     <div class="table-product-body">
                         @if (count($assignment) > 0)
                             @foreach ($assignment as $product)
-                                <p style="padding-top: 15px" >{{ $product->id }}</p>
-                                <p style="padding-top: 15px">{{ $product->project_name }}</p>
-                                <p style="padding-top: 15px">{{ $product->project_type }}</p>
-                                <p style="padding-top: 15px">{{ $product->customer_name }}</p>
-                                <p style="padding-top: 15px">{{ $product->customer_type }}</p>
-                                <p style="padding-top: 15px">{{ $product->employee_name }}</p>
-                                <p style="padding-top: 15px">{{ $product->deadline }}</p>
-                                <img style="margin-right:15px;" src="{{ asset('images/' . $product->image)}}"/>
-                                <div style="display: flex">
-                                    <a href="{{ route('assignment/edit', ['id' => $product->id]) }}" class="btn-link btn btn-success" style="padding-right:12px; padding-left:12px; padding-top:10px; margin-top: 0px; margin-right:15px;">
-                                        <i class="fas fa-pencil-alt" ></i>
-                                    </a>
-                                    <form method="post" action="{{ route('assignment/destroy', ['id' => $product->id]) }}">
-                                        @method('delete')
-                                        @csrf
-                                        <button class="btn btn-danger" onclick="deleteConfirm(event)" style="margin:-10px; padding-top:9px; padding-bottom:9px; padding-right:13px; padding-left:13px;">
-                                            <i class="far fa-trash-alt"></i>
-                                        </button>
-
-                                    </form>
-                                </div>
-
+                            <p class="padding-top">{{ $product->project_type }}</p>
+                            <p class="padding-top">{{ $product->customer_name }}</p>
+                            <p class="padding-top">{{ $product->customer_type }}</p>
+                            <p class="padding-top">{{ $product->employee_name }}</p>
+                            <p class="padding-top">{{ $product->deadline }}</p>
+                            <img class="image-margin" src="{{ asset('images/' . $product->image)}}" alt="Project image for {{ $product->project_type }}" />
+                            <div class="flex-container">
+                                <a href="{{ route('assignment/edit', ['id' => $product->id]) }}" class="btn-link btn btn-success">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
+                                <form method="post" action="{{ route('assignment/destroy', ['id' => $product->id]) }}">
+                                    @method('delete')
+                                    @csrf
+                                    <button class="btn btn-danger" onclick="deleteConfirm(event)">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </div>
                                 {{-- <div class="assignment-item">
                                     <p>{{ $product->project_name }}</p>
                                     <p>{{ $product->employee_name }}</p>

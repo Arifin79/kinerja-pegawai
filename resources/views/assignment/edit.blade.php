@@ -45,19 +45,12 @@
                             <label for="deadline">Deadline</label>
                             <input type="date" id="date" name="deadline" value="{{ $assignment->deadline }}"/>
                             <hr>
-                            <label>Project Type</label>
-                            <input type="text" class="input" name="project_type" value="{{ $assignment->project_type }}">
+                            <label for="project_type">Project Type</label>
+                            <input type="text" id="project_type" class="input" name="project_type" value="{{ $assignment->project_type }}">
                             <hr>
-                            <label>Customer Type</label>
-                            <input type="text" class="input" name="customer_type" value="{{ $assignment->customer_type }}">
-                            <label>Category</label>
-
-                            {{-- <hr>
-                            <label>Inventory</label>
-                            <input type="text" class="input" name="quantity" value="{{ $assignment->quantity }}">
-                            <hr>
-                            <label>Price</label>
-                            <input type="text" class="input" name="price" value="{{ $assignment->price }}"> --}}
+                            <label for="customer_type">Customer Type</label>
+                            <input type="text" id="customer_type" class="input" name="customer_type" value="{{ $assignment->customer_type }}">
+                            <label for="category">Category</label>
                        </div>
                     </div>
                     <div class="titlebar">
