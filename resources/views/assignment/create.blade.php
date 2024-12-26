@@ -30,14 +30,13 @@
                         <div>
                             <label for="employee_name">Employee Name</label>
                             <input type="text" name="employee_name" class="form-control" value="{{ old('employee_name', $assignment->employee_name ?? '') }}">
-                            <label>Deadline</label>
-                            <input type="date" name="deadline" />
+                            <label for="deadline">Deadline</label>
+                            <input type="date" id="deadline" name="deadline" />
                             <hr>
-                            <label>Project Type</label>
-                            {{-- <input type="text" class="input" name="project_type"> --}}
-                            <select  name="project_type">
+                            <label for="project_type">Project Type</label>
+                            <select id="project_type" name="project_type">
                                 @foreach ( json_decode('{"Konveksi": "Konveksi", "Software Development": "Software Development", "Hardware Service": "Hardware Service", "Event": "Event", "Digital Ads": "Digital Ads"}', true) as $optionKey => $optionValue )
-                                <option value="{{ $optionKey }}" {{ (isset($assignment->project_type) && $assignment->project_type == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
+                                    <option value="{{ $optionKey }}" {{ (isset($assignment->project_type) && $assignment->project_type == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
                                 @endforeach
                             </select>
                             <hr>
