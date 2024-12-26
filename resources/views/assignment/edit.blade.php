@@ -28,16 +28,12 @@
                     @endif
                     <div class="card">
                        <div>
-                        <label>Project Name</label>
-                            <input type="text" name="project_name" value="{{ $assignment->project_name}}">
+                        <label for="project_name">Project Name</label>
+                            <input type="text" id="project_name" name="project_name" value="{{ $assignment->project_name}}">
                             <hr>
-                            <label>Customer Name</label>
-                            <input type="text" name="customer_name" value="{{ $assignment->customer_name }}">
+                            <label for="customer_name">Customer Name</label>
+                            <input type="text" id="customer_name" name="customer_name" value="{{ $assignment->customer_name }}">
                             <hr>
-                            {{-- <label>Name</label>
-                            <input type="text" name="name" value="{{ $assignment->name }}">
-                            <label>Description (optional)</label>
-                            <textarea cols="10" rows="5" name="description" value="{{ $assignment->description }}">{{ $assignment->description }}</textarea> --}}
                             <label>Add Image</label>
                             <img src="{{ asset('images/'.$assignment->image) }}" alt="" class="img-product" id="file-preview" />
                             <input type="hidden" name="hidden_product_image" value="{{ $assignment->image }}">
@@ -65,7 +61,7 @@
                        </div>
                     </div>
                     <div class="titlebar">
-                        <h1></h1>
+                        <h1>Assignment</h1>
                         <input type="hidden" name="hidden_id" value="{{ $assignment->id }}">
                         <button>Save</button>
                     </div>
