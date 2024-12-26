@@ -17,15 +17,15 @@
                     </div>
                     <div class="card">
                        <div>
-                            <label>Project Name</label>
-                            <input type="text" name="project_name">
+                            <label for="project_name">Project Name</label>
+                            <input type="text" id="project_name" name="project_name">
                             <hr>
-                            <label>Customer Name</label>
-                            <input type="text" name="customer_name">
+                            <label for="customer_name">Customer Name</label>
+                            <input type="text" id="customer_name" name="customer_name">
                             <hr>
-                            <label>Add Image</label>
-                            <img src="" alt="" class="img-product" id="file-preview" />
-                            <input type="file" name="image" accept="image/*" onchange="showFile(event)">
+                            <label for="file-upload">Add Image</label>
+                            <img src="" alt="Preview of uploaded file" class="img-product" id="file-preview" />
+                            <input type="file" id="file-upload" name="image" accept="image/*" onchange="showFile(event)">
                         </div>
                         <div>
                             <label for="employee_name">Employee Name</label>

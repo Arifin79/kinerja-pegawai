@@ -19,12 +19,12 @@
     <div class="overlap-wrapper">
         <div class="row">
             @foreach ($assignment as $product)
-                <div class="overlap">
+                <<div class="overlap">
                     <img class="image-wrapper" src="{{ asset('images/' . $product->image)}}" alt="{{ $product->project_name }} image"/>
                     <div class="div">{{ $product->project_name }}</div>
                     <div class="text-wrapper-2">{{ $product->customer_type }}</div>
                     <div class="text-wrapper-3">{{ $product->deadline }}</div>
-                    {{-- <img class="clock" src="{{ asset('images/clock.jpg') }}" /> --}}
+                    <img class="clock" src="{{ asset('images/clock.jpg') }}" alt="Clock Icon" />
                     <a href="{{ route('home.assignment-user/edit', ['id' => $product->id]) }}" method="POST" class="btn-show">Detail</a>
                 </div>
             @endforeach
