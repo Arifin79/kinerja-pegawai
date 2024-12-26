@@ -40,9 +40,8 @@
                                 @endforeach
                             </select>
                             <hr>
-                            <label>Customer Type</label>
-                            {{-- <input type="text" class="input" name="customer_type"> --}}
-                            <select  name="customer_type">
+                            <label for="customer_type">Customer Type</label>
+                            <select id="customer_type" name="customer_type">
                                 @foreach ( json_decode('{"Mitra": "Mitra", "Reseller": "Reseller", "Non Mitra(Membership)": "Non Mitra(Membership)"}', true) as $optionKey => $optionValue )
                                 <option value="{{ $optionKey }}" {{ (isset($assignment->customer_type) && $assignment->customer_type == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
                                 @endforeach
