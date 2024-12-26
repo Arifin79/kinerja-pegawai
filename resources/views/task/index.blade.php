@@ -26,16 +26,16 @@
                     <div class="text-wrapper-4">{{ $product->date }}</div>
                     <div class="text-wrapper-5">{{ $product->title }}</div>
                     <a class="text-wrapper-6" href="{{ asset('images/' . $product->image) }}" download>
-                        <img class="imge" src="{{ asset('images/download.png') }}" />
+                        <img class="imge" src="{{ asset('images/download.png') }}" alt="Download icon for {{ $product->title }}" />
                     </a>
-                    <img class="img" src="{{ asset('images/clock.png') }}" />
+                    <img class="img" src="{{ asset('images/clock.png') }}" alt="Clock icon" />
                     <div class="group-2">
                         <div class="text-wrapper-7">{{ $product->name }}</div>
                     </div>
-                    <form method="post" action="{{ route('assignment/destroyer', ['id' => $product->id]) }}">
+                    <form  method="post" action="{{ route('assignment/destroyer', ['id' => $product->id]) }}">
                         @method('delete')
                         @csrf
-                        <button class="remove" onclick="deleteConfirm(event)" style="background-color: transparent; border: none; padding: 0; margin-right: 15px;">
+                        <button class="remove" onclick="deleteConfirm(event)">
                             <i class="far fa-trash-alt"></i>
                         </button>
                     </form>
