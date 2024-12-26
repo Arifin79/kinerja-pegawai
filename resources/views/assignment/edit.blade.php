@@ -34,16 +34,16 @@
                             <label for="customer_name">Customer Name</label>
                             <input type="text" id="customer_name" name="customer_name" value="{{ $assignment->customer_name }}">
                             <hr>
-                            <label>Add Image</label>
-                            <img src="{{ asset('images/'.$assignment->image) }}" alt="" class="img-product" id="file-preview" />
+                            <label for="image">Add Image</label>
+                            <img src="{{ asset('images/'.$assignment->image) }}" alt="Preview of uploaded image" class="img-product" id="file-preview" />
                             <input type="hidden" name="hidden_product_image" value="{{ $assignment->image }}">
-                            <input type="file" name="image" accept="image/*" onchange="showFile(event)">
+                            <input type="file" id="image" name="image" accept="image/*" onchange="showFile(event)">
                         </div>
                        <div>
-                            <label>Employee Name</label>
-                            <input type="text" class="input" name="employee_name" value="{{ $assignment->employee_name }}">
-                            <label>Deadline</label>
-                            <input type="date" name="deadline" value="{{ $assignment->deadline }}"/>
+                            <label for="employee_name">Employee Name</label>
+                            <input type="text" id="employee_name" class="input" name="employee_name" value="{{ $assignment->employee_name }}">
+                            <label for="deadline">Deadline</label>
+                            <input type="date" id="date" name="deadline" value="{{ $assignment->deadline }}"/>
                             <hr>
                             <label>Project Type</label>
                             <input type="text" class="input" name="project_type" value="{{ $assignment->project_type }}">
